@@ -1,0 +1,7 @@
+qinaL -- 2021-10-27 22:53
+- Design document made and pushed to github
+  - The site map is made, clear, and less convoluated
+  - No file map was done
+  - tasks breakdown at end of pdf and given to a team member
+- flag.jpg and README.md will be done at later date
+- Noakai in charge of design_wiki.pdf 
