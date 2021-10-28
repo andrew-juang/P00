@@ -5,3 +5,14 @@ qinaL -- 2021-10-27 22:53
   - tasks breakdown at end of pdf and given to a team member
 - flag.jpg and README.md will be done at later date
 - Noakai in charge of design_wiki.pdf 
+
+noakaiA -- 2021-10-28 18:16
+- Pushed design_wiki0.pdf and design_wiki1.pdf
+- Updated design.pdf to current version
+  - Current version looks good and got positive reviews
+  - Clearer task breakdown
+  - Clearer/more accurate site map
+  - Page layout for every major directory
+  - Updated program components, component relationships and DB format.
+  - Added Templates section
+- flag.jpg still needs doing.
