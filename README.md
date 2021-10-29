@@ -5,7 +5,7 @@ P00 -- Move Slowly and Fix Things <br>
 2021-10-27 
 
 ## App Description 
-insert stuff here
+thingymahblog
 
 ## Launch Codes
 - Install virtual environment <br>
