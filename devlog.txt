@@ -23,3 +23,6 @@ andrewJ, noakaiA, ericG, qinaL -- 2021-10-29 9:21
 - updated requirements
 - updated site headings
 - wrote site description
+
+qinaL -- 2021-10-29 13:42
+- fixed design_wiki1.pdf to be the design doc of the other trio (that makes up this team of 4)
