@@ -7,5 +7,5 @@ P00 -- Move Slowly and Fix Things <br>
 ## App Description 
 insert stuff here
 
-## How It Works
+## Launch Codes
 more stuff here
