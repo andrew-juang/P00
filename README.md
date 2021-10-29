@@ -8,4 +8,14 @@ P00 -- Move Slowly and Fix Things <br>
 insert stuff here
 
 ## Launch Codes
-more stuff here
+- Install virtual environment <br>
+```$ python3 -m venv env``` <br>
+```$ source env/bin/activate``` <br>
+- Install Dependencies <br>
+```$ pip install -r requirements.txt``` <br> 
+- Clone the Repository <br>
+```$ git clone https://github.com/Andrew1J/P00.git ``` <br>
+- Run the app <br>
+```$ cd ../P00/app/ ``` <br>
+```$ python3 app.py``` <br>
+- Open the website at http://127.0.0.1:5000/
