@@ -17,3 +17,9 @@ noakaiA -- 2021-10-28 18:16
   - Added Templates section
 - flag.jpg still needs doing.
 - flag.jpg done! (18:58)
+
+andrewJ, noakaiA, ericG, qinaL -- 2021-10-29 9:21
+- wrote launch codes in readme
+- updated requirements
+- updated site headings
+- wrote site description
