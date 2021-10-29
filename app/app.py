@@ -1,4 +1,4 @@
-# Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo
+# Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu
 # SoftDev
 # P00 -- Web Log Hosting Site
 # 2021-10-27
