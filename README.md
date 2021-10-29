@@ -3,3 +3,9 @@ Andrew Juang, Eric Guo, Noakai Aronesty, Qina Liu <br>
 Softdev <br>
 P00 -- Move Slowly and Fix Things <br>
 2021-10-27 
+
+## App Description 
+insert stuff here
+
+## How It Works
+more stuff here
