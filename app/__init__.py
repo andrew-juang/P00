@@ -5,6 +5,7 @@
 
 from os import urandom
 from flask import Flask, render_template, request, session, redirect, url_for
+import sqlite3, os.path
 
 # Flask app instance
 app = Flask(__name__)
@@ -51,7 +52,7 @@ def authenticate():
 
 @app.route("/logout")
 def logout():
-    ''' Logout user by deleting user from session dict. Redirects to loginpage'''
+    ''' Logout user by deleting user from session dict. Redirects to loginpage '''
 
     # Delete user. This try... except... block prevent an error from ocurring when the logout page is accessed from the login page
     try:
@@ -60,6 +61,23 @@ def logout():
         return redirect(url_for('disp_loginpage'))
     # Redirect to login page
     return redirect(url_for('disp_loginpage'))
+
+# Database functions
+def create_db():
+
+    DB_FILE="discobandit.db"
+
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("CREATE TABLE IF NOT EXISTS users (usernames TEXT, passwords TEXT);")
+    c.execute("CREATE TABLE IF NOT EXISTS blogs (usernames TEXT, blognames TEXT, id INTEGER, content TEXT);")
+    print(c.description)
+
+def main():
+    if not os.path.exists("discobandit.db"):
+        create_db()
+
+main()
 
 if __name__ == "__main__":
     app.debug = True
