@@ -19,7 +19,7 @@ def disp_loginpage():
         return render_template('response.html',username=session['username'])
     return render_template('login.html')
 
-
+# authetication of login 
 @app.route("/auth", methods=['GET','POST'])
 def authenticate():
     """ Checks whether method is get, post. If get method, then redirect to
@@ -50,6 +50,36 @@ def authenticate():
 def register():
     #displays register page
     return render_template('register.html')
+
+# authetication of username and passwords given in register page from user
+@app.route("/rAuth", methods =['GET', 'POST'])
+def rAuthenticate():
+    method = request.method
+    username = request.form.get('username')
+    password0 = request.form.get('password0')
+    password1 = request.form.get('password1')
+    
+    if method == 'GET':
+        return redirect(url_for('register'))
+    
+    if method == 'POST':
+        # if the 2 passwords given don't match, will display error saying so
+        if password0 != password1:
+            return render_template('register.html', mismatch = True)
+        else:
+            return render_template('login.html')
+            '''commented out b/c create_user does not work, gives error that 
+                                    "SQLite objects created in a thread can only be used in that same thread"
+                                    
+            # creates user account b/c no fails (pass match, username not taken)
+            if create_user(username, password0):
+                return render_template('login.html')
+            # username is taken, account creation fails, display such error
+            else:
+                return render_template('register.html', taken = True)
+            '''
+    
+    
 
 @app.route("/logout")
 def logout():

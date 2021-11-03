@@ -19,8 +19,8 @@ def auth_user(username, password):
 
     c.execute("SELECT usernames FROM users")
     if username in c.fetchall():
-        #
-
+        return True
+        
 
 def create_user(username, password):
     """ Adds user to database if right username and password are given when a
@@ -29,9 +29,14 @@ def create_user(username, password):
     c.execute("SELECT usernames FROM users")
 
     # add more conditionals here
+    
+    # username is taken already, returns fail to display error
     if username in c.fetchall():
         return False
+    # username is not taken, creates account with given username and password
     else:
         c.execute("INSERT INTO users VALUES (?, ?);",(username,password))
+       
     c.execute("SELECT * FROM users")
     print(c.fetchall())
+    

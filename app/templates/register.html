@@ -20,7 +20,7 @@ P00 -- Blog Site
                 does not connect to database yet- will have to implement later
                 will also have to implement error message when register fails- username taken, confirm password fails, etc.
         -->
-        <form action="/auth", method="POST">
+        <form action="/rAuth", method="POST">
             <label>Username: </label><br>
             <input type="text" name="username"><br>
             <label>Password: </label><br>
@@ -29,6 +29,14 @@ P00 -- Blog Site
             <input type="text" name="password1"><br><br>
             <input type="submit" name="sub1" value="Register">
         </form>
+        
+        {% if mismatch %}
+          <p style="color:red">*Passwords don't match! Please try again!</p>
+        {% endif %} 
+        
+        {% if taken %}
+            <p style="color: red">*Username is taken! Please use a different one!</p> 
+        {% endif %} 
 
 
     </body>
