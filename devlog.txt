@@ -46,3 +46,9 @@ qinaL -- 2021-11-02 21:42
 - added register button to landing page/login page
 - able to display register ability (username, password, confirm password) to users 
     - but does not actually register them to the database nor checks for fails (username in use, passwords don't match) 
+    
+andrewJ, noakaiA, ericG, qinaL -- 2021-11-3 9:17
+- implemented create_user
+- edited register template
+- allowed editing of database
+- started auth_user
