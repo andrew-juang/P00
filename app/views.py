@@ -8,7 +8,6 @@ from flask import Flask, render_template, request, session, redirect, url_for
 
 from app import app
 from app.auth import auth_user, create_user
-from app.articledb import create_article
 
 @app.route("/", methods=['GET', 'POST'])
 def disp_loginpage():
@@ -19,10 +18,7 @@ def disp_loginpage():
     if 'username' in session:
         return render_template('response.html',username=session['username'])
     return render_template('login.html')
-        #when users try to register and fail to have matching passwords
-    if method == 'GET':
-        if password0 != password1: 
-            return render_template('register.html')
+     
 
 @app.route("/auth", methods=['GET','POST'])
 def authenticate():
