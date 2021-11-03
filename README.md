@@ -16,6 +16,6 @@ thingymahblog
 - Clone the Repository <br>
 ```$ git clone https://github.com/Andrew1J/P00.git ``` <br><br>
 - Run the app <br>
-```$ cd ../P00/app/ ``` <br>
-```$ python3 __init__.py``` <br><br>
+```$ cd ../P00/ ``` <br>
+```$ python3 run.py``` <br><br>
 - Open the website at http://127.0.0.1:5000/
