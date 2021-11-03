@@ -8,12 +8,13 @@ from flask import Flask, render_template, request, session, redirect, url_for
 
 from app import app
 from app.auth import auth_user, create_user
+from app.articledb import create_article
 
 @app.route("/", methods=['GET', 'POST'])
 def disp_loginpage():
     """ Display login page if there is no username in session, else display the
        response with the session username passed in. """
-       
+
     # Renders response if there is a user logged in.
     if 'username' in session:
         return render_template('response.html',username=session['username'])
