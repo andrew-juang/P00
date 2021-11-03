@@ -18,6 +18,10 @@ def disp_loginpage():
     if 'username' in session:
         return render_template('response.html',username=session['username'])
     return render_template('login.html')
+        #when users try to register and fail to have matching passwords
+    if method == 'GET':
+        if password0 != password1: 
+            return render_template('register.html')
 
 @app.route("/auth", methods=['GET','POST'])
 def authenticate():
@@ -45,6 +49,11 @@ def authenticate():
             session['username'] = 'eric'
             return render_template('response.html',username=session['username'])
 
+@app.route("/register")
+def register():
+    #displays register page
+    return render_template('register.html')
+        
 @app.route("/logout")
 def logout():
     """ Logout user by deleting user from session dict. Redirects to loginpage """
