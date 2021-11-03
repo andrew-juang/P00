@@ -23,7 +23,6 @@ andrewJ, noakaiA, ericG, qinaL -- 2021-10-29 9:21
 - updated requirements
 - updated site headings
 - wrote site description
-- We chose the date to be the 12th because we believed that with the two days off in addition with the amount of class time we are given, we should have a good shot at completing before the 11th, with the 11th as the safety net in case something breaks. 
 
 qinaL -- 2021-10-29 13:42
 - fixed design_wiki1.pdf to be the design doc of the other trio (that makes up this team of 4)
