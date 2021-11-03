@@ -4,7 +4,7 @@ Kazimierz Major- Noakai Aronesty, Andrew Juang, Eric Guo, Qina Liu
 SoftDev
 P00 -- Blog Site
 2021-11-02
---> 
+-->
 
 <html>
     <head>
@@ -13,14 +13,14 @@ P00 -- Blog Site
 
     <body>
         <h1> Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu </h1>
-        <h1> Welcome, Please Register To Create An Account!</h1> 
-        
-        <!-- currently just displays register ability, 
+        <h1> Welcome, Please Register To Create An Account!</h1>
+
+        <!-- currently just displays register ability,
                 when user registers, for now, it will just return them to login page
                 does not connect to database yet- will have to implement later
                 will also have to implement error message when register fails- username taken, confirm password fails, etc.
         -->
-        <form action="/", method="POST">
+        <form action="/auth", method="POST">
             <label>Username: </label><br>
             <input type="text" name="username"><br>
             <label>Password: </label><br>
@@ -29,8 +29,8 @@ P00 -- Blog Site
             <input type="text" name="password1"><br><br>
             <input type="submit" name="sub1" value="Register">
         </form>
-        
-        
+
+
     </body>
 
 </html>

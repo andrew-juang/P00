@@ -18,7 +18,7 @@ def disp_loginpage():
     if 'username' in session:
         return render_template('response.html',username=session['username'])
     return render_template('login.html')
-     
+
 
 @app.route("/auth", methods=['GET','POST'])
 def authenticate():
@@ -50,7 +50,7 @@ def authenticate():
 def register():
     #displays register page
     return render_template('register.html')
-        
+
 @app.route("/logout")
 def logout():
     """ Logout user by deleting user from session dict. Redirects to loginpage """
