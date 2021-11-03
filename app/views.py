@@ -13,7 +13,7 @@ from app.auth import auth_user, create_user
 def disp_loginpage():
     """ Display login page if there is no username in session, else display the
        response with the session username passed in. """
-
+       
     # Renders response if there is a user logged in.
     if 'username' in session:
         return render_template('response.html',username=session['username'])
