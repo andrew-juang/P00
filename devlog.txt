@@ -26,3 +26,13 @@ andrewJ, noakaiA, ericG, qinaL -- 2021-10-29 9:21
 
 qinaL -- 2021-10-29 13:42
 - fixed design_wiki1.pdf to be the design doc of the other trio (that makes up this team of 4)
+
+andrewJ, noakaiA, ericG, qinaL -- 2021-11-1 9:21
+- began working with user database
+- created function to create database structure
+
+andrewJ -- 2021-11-2 21:22
+- began structuring of application
+- setup app as a module
+- created run.py to run the app module
+- created framework of auth.py functions
