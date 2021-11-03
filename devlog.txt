@@ -52,3 +52,10 @@ andrewJ, noakaiA, ericG, qinaL -- 2021-11-3 9:17
 - edited register template
 - allowed editing of database
 - started auth_user
+
+qinaL -- 2021-11-03 17:43
+- added "/rAuth" route in main.py to autheticate registration of users
+- now checks for when passwords don't match
+- added in register.html fail conditions (mismatch, taken) that when set to true displays corresponding error (passwords don't match, username is taken)
+  - mismatch can be triggered
+  - taken can't be triggered yet because there was an error with create_user 
