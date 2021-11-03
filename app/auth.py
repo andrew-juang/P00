@@ -15,7 +15,7 @@ c.execute("CREATE TABLE IF NOT EXISTS users (usernames TEXT, passwords TEXT);")
 c.execute("CREATE TABLE IF NOT EXISTS blogs (usernames TEXT, blognames TEXT, id INTEGER, content TEXT);")
 
 def auth_user(username, password):
-    """ Validates a username + password when person registers """
+    """ Validates a username + password when person logs in """
 
     c.execute("SELECT usernames FROM users")
     if username in c.fetchall():
@@ -23,7 +23,8 @@ def auth_user(username, password):
 
 
 def create_user(username, password):
-    """ Adds user to database if right username and password are given """
+    """ Adds user to database if right username and password are given when a
+        person registers """
 
     c.execute("SELECT usernames FROM users")
 
