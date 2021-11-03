@@ -39,3 +39,10 @@ andrewJ -- 2021-11-2 21:22
 - setup app as a module
 - created run.py to run the app module
 - created framework of auth.py functions
+
+qinaL -- 2021-11-02 21:42
+- added "/register" route 
+- created register.html
+- added register button to landing page/login page
+- able to display register ability (username, password, confirm password) to users 
+    - but does not actually register them to the database nor checks for fails (username in use, passwords don't match) 
