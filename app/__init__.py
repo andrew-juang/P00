@@ -11,4 +11,3 @@ app = Flask(__name__)
 app.secret_key = urandom(32)
 
 from app import views
-from app import auth

@@ -8,6 +8,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 
 from app import app
 from app.auth import auth_user, create_user
+from app.articledb import create_article
 
 @app.route("/", methods=['GET', 'POST'])
 def disp_loginpage():
