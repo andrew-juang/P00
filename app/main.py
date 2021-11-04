@@ -41,18 +41,20 @@ def authenticate():
         session['username'] = username
         return render_template('response.html', username=session['username'])
     elif auth_state == "bad_pass":
-        return render_template('login.html', input='Password is ')
+        return render_template('login.html', input="bad_pass")
     elif auth_state == "bad_user":
-        return render_template('login.html', input='Username is ')
+        return render_template('login.html', input="bad_user")
 
 @app.route("/register")
 def register():
-    #displays register page
+    """ Displays register page """
+
     return render_template('register.html')
 
-# authetication of username and passwords given in register page from user
 @app.route("/rAuth", methods =['GET', 'POST'])
 def rAuthenticate():
+    """ Authentication of username and passwords given in register page from user """
+
     method = request.method
     username = request.form.get('username')
     password0 = request.form.get('password0')
@@ -68,8 +70,8 @@ def rAuthenticate():
         # error when no password is inputted
         elif len(password0) == 0:
             return render_template('register.html', given = "password")
-        # a username and password is inputted 
-        else: 
+        # a username and password is inputted
+        else:
             # if the 2 passwords given don't match, will display error saying so
             if password0 != password1:
                 return render_template('register.html', mismatch = True)
@@ -77,7 +79,7 @@ def rAuthenticate():
                 # creates user account b/c no fails
                 if create_user(username, password0):
                     return render_template('login.html', input='success')
-                # does not create account because create_user failed (username is taken) 
+                # does not create account because create_user failed (username is taken)
                 else:
                     return render_template('register.html', taken = True)
 
@@ -96,4 +98,5 @@ def logout():
 
 @app.route("/create")
 def create():
+    """ Displays create blog page """
     return render_template('create.html')

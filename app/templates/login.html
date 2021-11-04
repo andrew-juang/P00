@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 <!--
-The Adjective Nouns -- Andrew Juang, Noakai Aronesty, Eric Guo
+Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu
 SoftDev
-K14 -- Form and Function
-2021-10-14
-
-simple demo of HTML forms via Flask
-
-trioTASK:
-If any member of team has forms experience, let their know-how osmote.
-If no one does, seek external assistance.
-PROTIP: Revisit code from intro if you have it.
-Peruse this code together and discuss how it should work, in conjunction with the back end apparatus.
+P00 -- Web Log Hosting Site
 -->
 
 
@@ -35,8 +26,10 @@ Peruse this code together and discuss how it should work, in conjunction with th
         <h3> New user? <a href="{{ url_for('register') }}">Create an account.</a> </h3>
         {% if input == "success" %}
             <p style="color:green">*Registration successful! Please login.</p>
-        {% elif input|length > 1 %}
-            <p style="color:red">*{{input}}incorrect please try again!</p>
+        {% elif input == "bad_user" %}
+            <p style="color:red">*Username not found. Please try again!</p>
+        {% elif input == "bad_pass" %}
+            <p style="color:red">*Password incorrect. Please try again!</p>
         {% endif %}<br>
 
     </body>
