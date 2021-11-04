@@ -35,7 +35,15 @@ def authenticate():
     # Get vs Post
     if method == 'GET':
         return redirect(url_for('disp_loginpage'))
-    return auth_user(username, password)
+
+    auth_state = auth_user(username, password)
+    if auth_state == True:
+        session['username'] = username
+        return render_template('response.html', username=session['username'])
+    elif auth_state == "password":
+        return render_template('login.html', input='Password is ')
+    elif auth_state == "username":
+        return render_template('login.html', input='Username is ')
 
 @app.route("/register")
 def register():

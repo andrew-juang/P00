@@ -5,7 +5,6 @@
 """Authentication/Creation of Users"""
 
 import sqlite3
-from flask import Flask, render_template, request, session, redirect, url_for
 
 DB_FILE = "discobandit.db"
 
@@ -31,12 +30,11 @@ def auth_user(username, password):
     if username in users:
         c.execute("SELECT passwords FROM users WHERE usernames = '" + username + "'")
         if c.fetchall()[0][0] == password:
-            session['username'] = username
-            return render_template('response.html', username=session['username'])
+            return True
         else:
-            return render_template('login.html', input='Password is ')
+            return "password"
     else:
-        return render_template('login.html', input='Username is ')
+        return "username"
 
 
 def create_user(username, password):
