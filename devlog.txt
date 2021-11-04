@@ -59,3 +59,9 @@ qinaL -- 2021-11-03 17:43
 - added in register.html fail conditions (mismatch, taken) that when set to true displays corresponding error (passwords don't match, username is taken)
   - mismatch can be triggered
   - taken can't be triggered yet because there was an error with create_user 
+
+andrewJ -- 2021-11-03 19:20
+- updated register template 
+- renamed functions in main to better fit
+- updated create_user, creating users now works!
+- updated auth_user to work with database
