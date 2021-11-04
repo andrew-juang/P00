@@ -92,7 +92,7 @@ noakaiA -- 2021-11-04 13:15
 - moved all render_template() calls to main.py
 - removed all Flask imports from auth.py
 
-qinaL -- 2021-10-04 16:50
+qinaL -- 2021-10-04 17:02
 - registration success words changed
 - moved the check for when no username/password is inputted from auth to main
 - now tells users specific error tht they didnt input username or password
