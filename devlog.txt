@@ -66,6 +66,11 @@ andrewJ -- 2021-11-03 19:20
 - updated create_user, creating users now works!
 - updated auth_user to work with database
 
+ericG -- 2021-11-03 23:15
+- created "create blog" template
+- added route to creating blogs
+- fixed merge conflict
+
 noakaiA -- 2021-11-03 23:19
 - made the password fields in the templated actual password fields for the epic dots
 - authentication works now, in all aspects
@@ -79,3 +84,6 @@ noakaiA -- 2021-11-03 23:19
 
 andrewJ -- 2021-11-04 9:05 
 - launch codes wrong order, realized when eric followed directions
+
+andrewJ, noakaiA, ericG, qinaL -- 2021-11-04 9:22
+- cleaned up messy code and fixed syntax errors
