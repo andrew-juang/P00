@@ -10,7 +10,7 @@ from app import app
 from app.auth import auth_user, create_user
 
 @app.route("/", methods=['GET', 'POST'])
-def disp_loginpage():
+def home():
     """ Display login page if there is no username in session, else display the
        response with the session username passed in. """
 
@@ -19,67 +19,59 @@ def disp_loginpage():
         return render_template('response.html',username=session['username'])
     return render_template('login.html')
 
-# authetication of login 
-@app.route("/auth", methods=['GET','POST'])
+# authentication of login
+@app.route("/login", methods=['GET','POST'])
 def authenticate():
     """ Checks whether method is get, post. If get method, then redirect to
        loginpage. If post, then authenticate the username and password, rendering
        the error page if incorrect and the response.html if correct username/pass. """
 
     # Variables
-    method = request.method
     username = request.form.get('username')
     password = request.form.get('password')
 
     # Get vs Post
-    if method == 'GET':
-        return redirect(url_for('disp_loginpage'))
-    if method == 'POST':
-        # Displays corresponding error message
-        if username != 'eric' and password != 'guo':
-            return render_template('login.html',input='Username and password are ')
-        elif username != 'eric':
-            return render_template('login.html',input='Username is ')
-        elif password != 'guo':
-            return render_template('login.html',input='Password is ')
-        else:
-            session['username'] = 'eric'
-            return render_template('response.html',username=session['username'])
+    if request.method == 'GET':
+        return redirect(url_for('home'))
+
+    # If user is located in database, create session
+    if auth_user(username,password):
+        session['username'] = username
+        return render_template('response.html',username=session['username'])
 
 @app.route("/register")
 def register():
-    #displays register page
+    # Displays register page
     return render_template('register.html')
 
-# authetication of username and passwords given in register page from user
+# Authentication of username and passwords given in register page from user
 @app.route("/rAuth", methods =['GET', 'POST'])
 def rAuthenticate():
     method = request.method
     username = request.form.get('username')
     password0 = request.form.get('password0')
     password1 = request.form.get('password1')
-    
+
     if method == 'GET':
         return redirect(url_for('register'))
-    
+
     if method == 'POST':
-        # if the 2 passwords given don't match, will display error saying so
+        # If the 2 passwords given don't match, will display error saying so
         if password0 != password1:
             return render_template('register.html', mismatch = True)
         else:
-            return render_template('login.html')
-            '''commented out b/c create_user does not work, gives error that 
-                                    "SQLite objects created in a thread can only be used in that same thread"
-                                    
+            #return render_template('login.html')
             # creates user account b/c no fails (pass match, username not taken)
             if create_user(username, password0):
                 return render_template('login.html')
             # username is taken, account creation fails, display such error
             else:
                 return render_template('register.html', taken = True)
+            '''commented out b/c create_user does not work, gives error that
+                                    "SQLite objects created in a thread can only be used in that same thread"
             '''
-    
-    
+
+
 
 @app.route("/logout")
 def logout():
@@ -89,6 +81,6 @@ def logout():
     try:
         session.pop('username')
     except KeyError:
-        return redirect(url_for('disp_loginpage'))
+        return redirect(url_for('home'))
     # Redirect to login page
-    return redirect(url_for('disp_loginpage'))
+    return redirect(url_for('home'))
