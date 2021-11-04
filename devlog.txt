@@ -76,3 +76,6 @@ noakaiA -- 2021-11-03 23:19
     - This prevents logins from unregistered users and prevents duplicate usernames from registering.
 - this took too long and there were too many stupid bugs and friking eric with the friking merge conflicts (jk) (sorta).
 - I need to clean this up and add comments later but it works good enough for now and my brain hurts.
+
+andrewJ -- 2021-11-04 9:05 
+- launch codes wrong order, realized when eric followed directions
