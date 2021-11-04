@@ -25,11 +25,11 @@ Peruse this code together and discuss how it should work, in conjunction with th
         <h1> Welcome, Travelers of the Intertoobz </h1>
         <h3> Enter your username and password below to proceed.</h3>
 
-        <form action="/login", method="POST">
+        <form action="/auth", method="POST">
             <label>Username: </label><br>
             <input type="text" name="username"><br>
             <label>Password: </label><br>
-            <input type="text" name="password"><br><br>
+            <input type="password" name="password"><br><br>
             <input type="submit" name="sub1" value="Login">
         </form>
         <h3> New user? <a href="{{ url_for('register') }}">Create an account.</a> </h3>
