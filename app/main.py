@@ -40,9 +40,9 @@ def authenticate():
     if auth_state == True:
         session['username'] = username
         return render_template('response.html', username=session['username'])
-    elif auth_state == "password":
+    elif auth_state == "bad_pass":
         return render_template('login.html', input='Password is ')
-    elif auth_state == "username":
+    elif auth_state == "bad_user":
         return render_template('login.html', input='Username is ')
 
 @app.route("/register")

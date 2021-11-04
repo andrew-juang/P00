@@ -32,9 +32,9 @@ def auth_user(username, password):
         if c.fetchall()[0][0] == password:
             return True
         else:
-            return "password"
+            return "bad_pass"
     else:
-        return "username"
+        return "bad_user"
 
 
 def create_user(username, password):
