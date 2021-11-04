@@ -62,15 +62,24 @@ def rAuthenticate():
         return redirect(url_for('register'))
 
     if method == 'POST':
-        # if the 2 passwords given don't match, will display error saying so
-        if password0 != password1:
-            return render_template('register.html', mismatch = True)
-        else:
-            # creates user account b/c no fails (pass match, username not taken)
-            if create_user(username, password0) == False:
-                return render_template('register.html', input='a')
+        # error when no username is inputted
+        if len(username) == 0:
+            return render_template('register.html', given = "username")
+        # error when no password is inputted
+        elif len(password0) == 0:
+            return render_template('register.html', given = "password")
+        # a username and password is inputted 
+        else: 
+            # if the 2 passwords given don't match, will display error saying so
+            if password0 != password1:
+                return render_template('register.html', mismatch = True)
             else:
-                return render_template('login.html', input='success')
+                # creates user account b/c no fails
+                if create_user(username, password0):
+                    return render_template('login.html', input='success')
+                # does not create account because create_user failed (username is taken) 
+                else:
+                    return render_template('register.html', taken = True)
 
 @app.route("/logout")
 def logout():

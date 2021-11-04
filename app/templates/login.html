@@ -34,7 +34,7 @@ Peruse this code together and discuss how it should work, in conjunction with th
         </form>
         <h3> New user? <a href="{{ url_for('register') }}">Create an account.</a> </h3>
         {% if input == "success" %}
-            <p style="color:green">*{{input}}</p>
+            <p style="color:green">*Registration successful! Please login.</p>
         {% elif input|length > 1 %}
             <p style="color:red">*{{input}}incorrect please try again!</p>
         {% endif %}<br>

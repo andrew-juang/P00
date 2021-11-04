@@ -52,12 +52,13 @@ def create_user(username, password):
         users.append(a_tuple[0])
 
     # change this into separate function to check requirements
-    if username in users or len(username)<1 or len(password)<1:
+    if username in users:
         return False
     # username is not taken, creates account with given username and password
     else:
         c.execute("INSERT INTO users VALUES (?, ?);", (username, password))
         db.commit()
+        return True
 
 create_db()
 
