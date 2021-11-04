@@ -24,24 +24,24 @@ P00 -- Blog Site
             <label>Username: </label><br>
             <input type="text" name="username"><br>
             <label>Password: </label><br>
-            <input type="password" name="password0"><br>
+            <input type="text" name="password0"><br>
             <label>Confirm Password: </label><br>
-            <input type="password" name="password1"><br><br>
+            <input type="text" name="password1"><br><br>
             <input type="submit" name="sub1" value="Register">
         </form>
-
-<!--        Band-aid: fix later-->
-        {% if input|length > 1 %}
+        <h3> Already have an account? <a href="{{ url_for('disp_loginpage') }}">Login</a> </h3>
+        <!--        Band-aid: fix later-->
+        {% if input|length >= 1 %}
             <p style="color:red">*Incorrect please try again!</p>
         {% endif %}<br>
 
         {% if mismatch %}
           <p style="color:red">*Passwords don't match! Please try again!</p>
-        {% endif %} 
-        
+        {% endif %}
+
         {% if taken %}
-            <p style="color: red">*Username is taken! Please use a different one!</p> 
-        {% endif %} 
+            <p style="color: red">*Username is taken! Please use a different one!</p>
+        {% endif %}
 
 
     </body>

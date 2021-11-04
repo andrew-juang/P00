@@ -9,6 +9,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 from app import app
 from app.auth import auth_user, create_user, create_db
 
+
 @app.route("/", methods=['GET', 'POST'])
 def disp_loginpage():
     """ Display login page if there is no username in session, else display the
@@ -19,7 +20,7 @@ def disp_loginpage():
         return render_template('response.html',username=session['username'])
     return render_template('login.html')
 
-# authetication of login 
+# authetication of login
 @app.route("/auth", methods=['GET','POST'])
 def authenticate():
     """ Checks whether method is get, post. If get method, then redirect to
@@ -48,10 +49,10 @@ def rAuthenticate():
     username = request.form.get('username')
     password0 = request.form.get('password0')
     password1 = request.form.get('password1')
-    
+
     if method == 'GET':
         return redirect(url_for('register'))
-    
+
     if method == 'POST':
         # if the 2 passwords given don't match, will display error saying so
         if password0 != password1:
@@ -61,7 +62,7 @@ def rAuthenticate():
             if create_user(username, password0) == False:
                 return render_template('register.html', input='a')
             else:
-                return render_template('login.html', input='success ')
+                return render_template('login.html', input='success')
 
 @app.route("/logout")
 def logout():
@@ -74,3 +75,8 @@ def logout():
         return redirect(url_for('disp_loginpage'))
     # Redirect to login page
     return redirect(url_for('disp_loginpage'))
+
+
+@app.route("/create")
+def create():
+    return render_template('create.html')

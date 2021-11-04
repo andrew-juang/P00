@@ -40,11 +40,11 @@ def auth_user(username, password):
 
 
 def create_user(username, password):
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
     """ Adds user to database if right username and password are given when a
         person registers """
 
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
 
     # add more conditionals here
     # username is taken already, returns fail to display error
@@ -53,7 +53,8 @@ def create_user(username, password):
     for a_tuple in c.fetchall():
         users.append(a_tuple[0])
 
-    if username in users:
+    # change this into separate function to check requirements
+    if username in users or len(username)<1 or len(password)<1:
         return False
     # username is not taken, creates account with given username and password
     else:
