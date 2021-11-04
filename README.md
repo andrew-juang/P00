@@ -14,7 +14,7 @@ thingymahblog
 - Clone the Repository <br>
 ```$ git clone https://github.com/Andrew1J/P00.git ``` <br><br>
 - Install Dependencies <br>
-```$ cd ../P00/ ``` <br>
+```$ cd P00 ``` <br>
 ```$ pip install -r requirements.txt``` <br><br> 
 - Run the app <br>
 ```$ python3 run.py``` <br><br>
