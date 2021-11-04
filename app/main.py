@@ -72,6 +72,10 @@ def rAuthenticate():
             '''
 
 
+@app.route("/create")
+def create():
+    return render_template('create.html')
+
 
 @app.route("/logout")
 def logout():
