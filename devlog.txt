@@ -68,7 +68,6 @@ andrewJ -- 2021-11-03 19:20
 
 noakaiA -- 2021-11-03 23:19
 - made the password fields in the templated actual password fields for the epic dots
-- dunno what Andrew was talking about in 2021-11-03 19:20. Creating users most definitely did not work (does now though).
 - authentication works now, in all aspects
   - creating users
   - authenticating those users
@@ -76,3 +75,4 @@ noakaiA -- 2021-11-03 23:19
   - can actually check if a username is already in the db now (previous way of checking didn't work). 
     - This prevents logins from unregistered users and prevents duplicate usernames from registering.
 - this took too long and there were too many stupid bugs and friking eric with the friking merge conflicts (jk) (sorta).
+- I need to clean this up and add comments later but it works good enough for now
