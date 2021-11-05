@@ -18,7 +18,8 @@ def disp_loginpage():
 
     # Renders response if there is a user logged in.
     if 'username' in session:
-        return render_template('response.html',username=session['username'])
+        blogs = ['article1','article2']
+        return render_template('response.html',username=session['username'], blogs=blogs)
     return render_template('login.html')
 
 

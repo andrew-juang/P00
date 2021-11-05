@@ -17,8 +17,13 @@ P00 -- Web Log Hosting Site
             <input type="submit" name="sub1" value="Create Blog">
         </form> <br>
 
-        <!-- List of blogs here -->
-
+        <!-- Fetches blogs from database and creates table of blogs here -->
+        <h1> List of Blogs </h1>
+        {% for blogname in blogs %}
+            <a href="https://www.youtube.com/watch?v=34Ig3X59_qA">{{ blogname }}</a>
+            <br>
+        {% endfor %}
+        <br>
         <form action="/logout">
             <input type="submit" name="sub1" value="Logout">
         </form> <br>
