@@ -2,7 +2,7 @@
 # SoftDev
 # P00 -- Web Log Hosting Site
 
-"""Handles all of the routes of the Flask Application"""
+""" Handles all of the routes of the Flask Application """
 
 from flask import Flask, render_template, request, session, redirect, url_for
 
@@ -12,20 +12,21 @@ from app.auth import auth_user, create_user, create_db
 
 @app.route("/", methods=['GET', 'POST'])
 def disp_loginpage():
-    """ Display login page if there is no username in session, else display the
-       response with the session username passed in. """
+    ''' Display login page if there is no username in session, else display the
+       response with the session username passed in. '''
 
     # Renders response if there is a user logged in.
     if 'username' in session:
         return render_template('response.html',username=session['username'])
     return render_template('login.html')
 
+
 # authetication of login
 @app.route("/auth", methods=['GET','POST'])
 def authenticate():
-    """ Checks whether method is get, post. If get method, then redirect to
+    ''' Checks whether method is get, post. If get method, then redirect to
        loginpage. If post, then authenticate the username and password, rendering
-       the error page if incorrect and the response.html if correct username/pass. """
+       the error page if incorrect and the response.html if correct username/pass. '''
 
     # Variables
     method = request.method
@@ -45,15 +46,17 @@ def authenticate():
     elif auth_state == "bad_user":
         return render_template('login.html', input="bad_user")
 
+
 @app.route("/register")
 def register():
-    """ Displays register page """
+    ''' Displays register page '''
 
     return render_template('register.html')
 
+
 @app.route("/rAuth", methods =['GET', 'POST'])
 def rAuthenticate():
-    """ Authentication of username and passwords given in register page from user """
+    ''' Authentication of username and passwords given in register page from user '''
 
     method = request.method
     username = request.form.get('username')
@@ -83,9 +86,10 @@ def rAuthenticate():
                 else:
                     return render_template('register.html', taken = True)
 
+
 @app.route("/logout")
 def logout():
-    """ Logout user by deleting user from session dict. Redirects to loginpage """
+    ''' Logout user by deleting user from session dict. Redirects to loginpage '''
 
     # Delete user. This try... except... block prevent an error from ocurring when the logout page is accessed from the login page
     try:
@@ -98,5 +102,5 @@ def logout():
 
 @app.route("/create")
 def create():
-    """ Displays create blog page """
+    ''' Displays create blog page '''
     return render_template('create.html')
