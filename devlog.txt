@@ -120,3 +120,6 @@ andrewJ, ericG, qinaL -- 2021-11-05 9:12
 - Fixed CreateBlog
 - Adds a way to get username
 - Everything works now, nothing broken
+
+andrewJ -- 2021-11-05 9:36
+- Started displaying blogs
