@@ -8,6 +8,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 
 from app import app
 from app.auth import auth_user, create_user, create_db
+from app.articles import create_blog, update_blog, delete_blog
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -100,7 +101,16 @@ def logout():
     return redirect(url_for('disp_loginpage'))
 
 
-@app.route("/create")
+@app.route("/create", methods=['GET','POST'])
 def create():
     ''' Displays create blog page '''
+
     return render_template('create.html')
+
+
+@app.route("/createblog", methods=['GET', 'POST'])
+def createblog():
+    ''' Creates blog '''
+
+    create_blog()
+    return redirect(url_for('disp_loginpage'))

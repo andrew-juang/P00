@@ -19,28 +19,24 @@ def create_db():
 
 
 def create_blog():
-    ''' Adds user to database if right username and password are given when a
-        person registers '''
+    ''' Publishes a blog '''
 
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    # add more conditionals here
-    # username is taken already, returns fail to display error
-    c.execute("SELECT usernames FROM users")
-    users = []
-    for a_tuple in c.fetchall():
-        users.append(a_tuple[0])
+    return True
 
-    # change this into separate function to check requirements
-    if username in users:
-        return False
-    # username is not taken, creates account with given username and password
-    else:
-        c.execute("INSERT INTO users VALUES (?, ?);", (username, password))
-        db.commit()
-        return True
 
+def update_blog():
+    ''' Updates blog '''
+
+    return True
+
+
+def delete_blog():
+    ''' Delete blog '''
+
+    return True
 
 db = sqlite3.connect(DB_FILE)
 c = db.cursor()
