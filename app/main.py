@@ -111,6 +111,17 @@ def create():
 @app.route("/createblog", methods=['GET', 'POST'])
 def createblog():
     ''' Creates blog '''
+    
+    method = request.method
+    title = request.form.get('title')
+    text = request.form.get('text')
+    if method == 'POST':
+        if len(title) <= 0:
+            ''' error of some sort'''
+        elif len(text) <= 0:
+            '''error of some sort'''
+        else:
+            #create_blog(title,text)
+            '''some stuff'''
 
-    create_blog()
     return redirect(url_for('disp_loginpage'))
