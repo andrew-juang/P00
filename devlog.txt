@@ -123,3 +123,6 @@ andrewJ, ericG, qinaL -- 2021-11-05 9:12
 
 andrewJ -- 2021-11-05 9:36
 - Started displaying blogs
+
+andrewJ -- 2021-11-05 12:49
+- Finished displaying blogs, now displays list of blogs with corresponding names
