@@ -5,6 +5,7 @@
 """ Article Database """
 
 import sqlite3
+import random
 
 DB_FILE = "discobandit.db"
 
@@ -18,13 +19,27 @@ def create_db():
     db.close()
 
 
-def create_blog():
-    ''' Publishes a blog '''
+# def create_blog(title,text):
+#     ''' Publishes a blog '''
 
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
+#     db = sqlite3.connect(DB_FILE)
+#     c = db.cursor()
+#     id = generate_id()
+#     '''Work on tomorrow, somehow get the username'''
+#     username = "bob"
+#     c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?);", (username, title, id, text))
 
-    return True
+
+# '''need a better way to generate id later probably'''
+# def generate_id():
+#     id = random.randint(0,999999)
+#     c.execute("SELECT id FROM blogs")
+#     blogids = []
+#     for a_tuple in c.fetchall():
+#         blogids.append(a_tuple[0])
+#     while id in blogids:
+#         id = random.randint(0,999999)
+#     return id
 
 
 def update_blog():
