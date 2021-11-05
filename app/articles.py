@@ -56,12 +56,24 @@ def delete_blog():
 
     return True
 
+def fetch_blogs():
+    ''' Fetch list of blog names '''
+    
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("SELECT blognames FROM blogs")
+    blogs = []
+    for a_tuple in c.fetchall():
+        blogs.append(a_tuple[0])
+    return blogs
+
+
 # TESTS
 create_db()
 db = sqlite3.connect(DB_FILE)
 c = db.cursor()
 db.commit()
-c.execute("SELECT usernames FROM blogs")
+c.execute("SELECT blognames FROM blogs")
 blogs = []
 for a_tuple in c.fetchall():
     blogs.append(a_tuple[0])

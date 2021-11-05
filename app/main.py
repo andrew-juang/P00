@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 
 from app import app
 from app.auth import auth_user, create_user, create_db
-from app.articles import create_blog, update_blog, delete_blog
+from app.articles import create_blog, update_blog, delete_blog, fetch_blogs
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -16,9 +16,9 @@ def disp_loginpage():
     ''' Display login page if there is no username in session, else display the
        response with the session username passed in. '''
 
-    # Renders response if there is a user logged in.
+    # Renders response if there is a user logged in, else render login page
     if 'username' in session:
-        blogs = ['article1','article2']
+        blogs = fetch_blogs()
         return render_template('response.html',username=session['username'], blogs=blogs)
     return render_template('login.html')
 
@@ -42,7 +42,7 @@ def authenticate():
     auth_state = auth_user(username, password)
     if auth_state == True:
         session['username'] = username
-        return render_template('response.html', username=session['username'])
+        return redirect(url_for('disp_loginpage'))
     elif auth_state == "bad_pass":
         return render_template('login.html', input="bad_pass")
     elif auth_state == "bad_user":
@@ -114,14 +114,11 @@ def createblog():
     ''' Creates blog '''
 
     method = request.method
-    title = request.form.get('title')
-    text = request.form.get('text')
+    title = request.form.get('Title')
+    text = request.form.get('Body')
+
+    # TODO: CHECK if field is empty 
     if method == 'POST':
-        # if len(title) <= 0:
-        #     ''' error of some sort'''
-        # elif len(text) <= 0:
-        #     '''error of some sort'''
-        # else:
         create_blog(title,text,session['username'])
 
     return redirect(url_for('disp_loginpage'))
