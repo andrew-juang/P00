@@ -115,3 +115,8 @@ ericG -- 2021-11-05 3:01
 - Added some conditionals to prepare for creating "createblog"
 - Mostly finished create_blog, needs a way to find username
 - Currently all code for create_blog is commented out due to not being finished
+
+andrewJ, ericG, qinaL -- 2021-11-05 9:12
+- Fixed CreateBlog
+- Adds a way to get username
+- Everything works now, nothing broken
