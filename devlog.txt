@@ -1,10 +1,14 @@
+Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu
+SoftDev
+P00 -- Web Log Hosting Site
+
 qinaL -- 2021-10-27 22:53
 - Design document made and pushed to github
   - The site map is made, clear, and less convoluated
   - No file map was done
   - tasks breakdown at end of pdf and given to a team member
 - flag.jpg and README.md will be done at later date
-- Noakai in charge of design_wiki.pdf 
+- Noakai in charge of design_wiki.pdf
 
 noakaiA -- 2021-10-28 18:16
 - Pushed design_wiki0.pdf and design_wiki1.pdf
@@ -23,9 +27,9 @@ andrewJ, noakaiA, ericG, qinaL -- 2021-10-29 9:21
 - updated requirements
 - updated site headings
 - wrote site description
-- we chose the due date to be the 12th because we believed that with the two days off in 
-  addition with the amount of class time we are given, we should have a good shot at completing 
-  before the 11th, with the 11th as the safety net in case something breaks. 
+- we chose the due date to be the 12th because we believed that with the two days off in
+  addition with the amount of class time we are given, we should have a good shot at completing
+  before the 11th, with the 11th as the safety net in case something breaks.
 
 qinaL -- 2021-10-29 13:42
 - fixed design_wiki1.pdf to be the design doc of the other trio (that makes up this team of 4)
@@ -41,12 +45,12 @@ andrewJ -- 2021-11-2 21:22
 - created framework of auth.py functions
 
 qinaL -- 2021-11-02 21:42
-- added "/register" route 
+- added "/register" route
 - created register.html
 - added register button to landing page/login page
-- able to display register ability (username, password, confirm password) to users 
-    - but does not actually register them to the database nor checks for fails (username in use, passwords don't match) 
-    
+- able to display register ability (username, password, confirm password) to users
+    - but does not actually register them to the database nor checks for fails (username in use, passwords don't match)
+
 andrewJ, noakaiA, ericG, qinaL -- 2021-11-3 9:17
 - implemented create_user
 - edited register template
@@ -58,10 +62,10 @@ qinaL -- 2021-11-03 17:43
 - now checks for when passwords don't match
 - added in register.html fail conditions (mismatch, taken) that when set to true displays corresponding error (passwords don't match, username is taken)
   - mismatch can be triggered
-  - taken can't be triggered yet because there was an error with create_user 
+  - taken can't be triggered yet because there was an error with create_user
 
 andrewJ -- 2021-11-03 19:20
-- updated register template 
+- updated register template
 - renamed functions in main to better fit
 - updated create_user, creating users now works!
 - updated auth_user to work with database
@@ -77,12 +81,12 @@ noakaiA -- 2021-11-03 23:19
   - creating users
   - authenticating those users
   - updating and changing the database
-  - can actually check if a username is already in the db now (previous way of checking didn't work). 
+  - can actually check if a username is already in the db now (previous way of checking didn't work).
     - This prevents logins from unregistered users and prevents duplicate usernames from registering.
 - this took too long and there were too many stupid bugs and friking eric with the friking merge conflicts (jk) (sorta).
 - I need to clean this up and add comments later but it works good enough for now and my brain hurts.
 
-andrewJ -- 2021-11-04 9:05 
+andrewJ -- 2021-11-04 9:05
 - launch codes wrong order, realized when eric followed directions
 
 andrewJ, noakaiA, ericG, qinaL -- 2021-11-04 9:22
@@ -98,8 +102,8 @@ qinaL -- 2021-11-04 17:02
 - now tells users specific error tht they didnt input username or password
 - registration should be done
   - checks for when no username is inputted, no password is inputted, when passwords don't match, and when the username is taken
-  - if there are no fails, account is created and user is sent back to login page with instructions saying to login, and login is useful 
-  
+  - if there are no fails, account is created and user is sent back to login page with instructions saying to login, and login is useful
+
 andrewJ -- 2021-11-04 20:32
 - fixed error messages for login page
 - fixed create blogs / create routing in main.py
@@ -110,4 +114,4 @@ andrewJ -- 2021-11-04 20:32
 ericG -- 2021-11-05 3:01
 - Added some conditionals to prepare for creating "createblog"
 - Mostly finished create_blog, needs a way to find username
-- Currently all code for create_blog is commented out due to not being finished 
+- Currently all code for create_blog is commented out due to not being finished
