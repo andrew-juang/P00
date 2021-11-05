@@ -99,3 +99,10 @@ qinaL -- 2021-10-04 17:02
 - registration should be done
   - checks for when no username is inputted, no password is inputted, when passwords don't match, and when the username is taken
   - if there are no fails, account is created and user is sent back to login page with instructions saying to login, and login is useful 
+  
+andrewJ -- 2021-10-04 20:32
+- fixed error messages for login page
+- fixed create blogs / create routing in main.py
+- fixed typo in create template
+- cleaned up code + added comments
+- started functions for the articles database
