@@ -19,27 +19,30 @@ def create_db():
     db.close()
 
 
-# def create_blog(title,text):
-#     ''' Publishes a blog '''
+def create_blog(title,text,username):
+    ''' Publishes a blog '''
 
-#     db = sqlite3.connect(DB_FILE)
-#     c = db.cursor()
-#     id = generate_id()
-#     '''Work on tomorrow, somehow get the username'''
-#     username = "bob"
-#     c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?);", (username, title, id, text))
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    id = generate_id()
+    c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?);", (username, title, id, text))
 
+    db.commit()
 
-# '''need a better way to generate id later probably'''
-# def generate_id():
-#     id = random.randint(0,999999)
-#     c.execute("SELECT id FROM blogs")
-#     blogids = []
-#     for a_tuple in c.fetchall():
-#         blogids.append(a_tuple[0])
-#     while id in blogids:
-#         id = random.randint(0,999999)
-#     return id
+def generate_id():
+    ''' Generate random ID for blog '''
+
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    id = random.randint(0,999999)
+    c.execute("SELECT id FROM blogs")
+    blogids = []
+    for a_tuple in c.fetchall():
+        blogids.append(a_tuple[0])
+    while id in blogids:
+        id = random.randint(0,999999)
+    return id
 
 
 def update_blog():
@@ -53,6 +56,8 @@ def delete_blog():
 
     return True
 
+# TESTS
+create_db()
 db = sqlite3.connect(DB_FILE)
 c = db.cursor()
 db.commit()
