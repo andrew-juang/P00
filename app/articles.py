@@ -67,13 +67,32 @@ def fetch_blogs():
         blogs.append(a_tuple[0])
     return blogs
 
-
+def get_title_from_id(blogID):
+    ''' returns the title of corrresponding blog using the blog id '''
+    
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("SELECT blognames FROM blogs WHERE id = "+ str(blogID))
+    for content in c.fetchall():
+        return content[0]
+    
+def get_content_from_id(blogID):
+    ''' returns the content of corrresponding blog using the blog id '''
+    
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("SELECT content FROM blogs WHERE id = "+ str(blogID))
+    for content in c.fetchall():
+        return content[0]
+    
+    
 # TESTS
 create_db()
 db = sqlite3.connect(DB_FILE)
 c = db.cursor()
 db.commit()
-c.execute("SELECT blognames FROM blogs")
+c.execute("SELECT * FROM blogs")
+print(c.fetchall())
 blogs = []
 for a_tuple in c.fetchall():
     blogs.append(a_tuple[0])

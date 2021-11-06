@@ -8,8 +8,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 
 from app import app
 from app.auth import auth_user, create_user, create_db
-from app.articles import create_blog, update_blog, delete_blog, fetch_blogs
-
+from app.articles import create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id, get_content_from_id
 
 @app.route("/", methods=['GET', 'POST'])
 def disp_loginpage():
@@ -105,8 +104,13 @@ def logout():
 @app.route("/create", methods=['GET','POST'])
 def create():
     ''' Displays create blog page '''
-
-    return render_template('create.html')
+    
+    # user is logged in and is allowed to create
+    if 'username' in session:
+        return render_template('create.html')
+    # user is not logged in and redirected to login page (catches error when user tries to go directly to /create w/o logging in)
+    else:
+        return redirect(url_for('disp_loginpage'))
 
 
 @app.route("/createblog", methods=['GET', 'POST'])
@@ -122,3 +126,16 @@ def createblog():
         create_blog(title,text,session['username'])
 
     return redirect(url_for('disp_loginpage'))
+
+@app.route("/displayblog")
+def displayblog():
+    ''' route for displaying a blog page '''
+    
+    # hardcoded a blog i have in the database for testing rn
+    blogID = 766114
+    
+    title = get_title_from_id(blogID)
+    content = get_content_from_id(blogID)
+    
+    # displays the blog with title and content using display template
+    return render_template('display.html', title = title, content = content)

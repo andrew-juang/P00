@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu
+SoftDev
+P00 -- Web Log Hosting Site
+-->
+
+<html>
+    <head>
+        <title> DISPLAY PAGE </title>
+    </head>
+
+    <body>
+        <h1> Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu </h1>
+        <h1> Waaaa hooo HAAAH, {{username}} </h1>
+        
+        <!-- link to go back to homepage -->
+        <a href="{{ url_for('disp_loginpage') }}">Back to Homepage</a>
+        <br>
+        <!-- button to logout -->
+        <form action="/logout">
+            <input type="submit" name="sub1" value="Logout">
+        </form> 
+        <br>
+        <!-- Display Blog Here -->
+        <h1> {{title}} </h1>
+        <br>
+        {{content}}
+
+    </body>
+
+</html>
