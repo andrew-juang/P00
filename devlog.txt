@@ -126,3 +126,11 @@ andrewJ -- 2021-11-05 9:36
 
 andrewJ -- 2021-11-05 12:49
 - Finished displaying blogs, now displays list of blogs with corresponding names
+
+qinaL -- 2021-11-05 22:01
+- added catch error for when not logged in and going straight to /create; now reroutes user back to login(user must be logged in to create blog)
+- created display.html for template of a blog page
+- added /display route with diplayblog function in main.py
+    - a display(testing) button is added to response.html to test displayblog
+    - currently just has one blog id hardcoded for testing; idk how to incorporate as a link for each blog page yet
+- added get_title_from_id and get_content_from_id in article.py, which are used in displayblog
