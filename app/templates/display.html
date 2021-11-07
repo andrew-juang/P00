@@ -22,7 +22,8 @@ P00 -- Web Log Hosting Site
             <input type="submit" name="sub1" value="Logout">
         </form>
         <br>
-        <!-- Display Blog Here -->
+        <h2>Entries</h2>
+        <!-- Display Entries Here -->
         <h1> {{title}} </h1>
         {% for title,content in titles_content %}
             <h3>{{ title }}</h3>
@@ -30,8 +31,6 @@ P00 -- Web Log Hosting Site
             <br>
         {% endfor %}
         <br>
-        {{content}}
-
     </body>
 
 </html>

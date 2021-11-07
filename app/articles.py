@@ -100,6 +100,17 @@ def get_content_from_id(blogID):
     for content in c.fetchall():
         return content[0]
 
+def fetch_users():
+    ''' Returns list of users '''
+
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("SELECT usernames FROM blogs")
+    users = []
+    for a_tuple in c.fetchall():
+        users.append(a_tuple[0])
+    return users
+
 
 # TESTS
 create_db()

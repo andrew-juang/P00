@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 
 from app import app
 from app.auth import auth_user, create_user, create_db
-from app.articles import create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id, get_content_from_id, get_ids
+from app.articles import create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id, get_content_from_id, get_ids, fetch_users
 
 @app.route("/", methods=['GET', 'POST'])
 def disp_loginpage():
@@ -18,7 +18,8 @@ def disp_loginpage():
     # Renders response if there is a user logged in, else render login page
     if 'username' in session:
         blogs = fetch_blogs()
-        return render_template('response.html',username=session['username'], blogs=blogs)
+        users = fetch_users()
+        return render_template('response.html',username=session['username'], blogs_users=zip(blogs,users))
     return render_template('login.html')
 
 
@@ -127,20 +128,22 @@ def createblog():
 
     return redirect(url_for('disp_loginpage'))
 
-@app.route("/displayblog")
-def displayblog():
+@app.route("/displayblog/<username>", methods=['GET', 'POST'])
+def displayblog(username):
     ''' route for displaying a blog page '''
+
+    if not bool(username):
+        return redirect(url_for('displayblog', username=session['username']))
     titles = []
     content = []
     ids = []
-
-    print(session['username'])
+    print(username)
     # hardcoded a blog i have in the database for testing rn
-    ids = get_ids(session['username'])
+    ids = get_ids(username)
     print(ids)
     for id in ids:
         titles.append(get_title_from_id(id))
         content.append(get_content_from_id(id))
 
     # displays the blog with title and content using display template
-    return render_template('display.html', user = session['username'], titles_content = zip(titles,content))
+    return render_template('display.html', user = username, titles_content = zip(titles,content))

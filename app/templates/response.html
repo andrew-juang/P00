@@ -19,17 +19,16 @@ P00 -- Web Log Hosting Site
 
         <!-- Fetches blogs from database and creates table of blogs here -->
         <h1> List of Blogs </h1>
-        {% for blogname in blogs %}
-            <a href="https://www.youtube.com/watch?v=34Ig3X59_qA">{{ blogname }}</a>
+        {% for blogname,user in blogs_users %}
+            <a href="{{ url_for('displayblog', username=user) }}">{{ blogname }}</a>
             <br>
         {% endfor %}
-        <br>
         <form action="/logout">
             <input type="submit" name="sub1" value="Logout">
         </form> <br>
-        
-        <!-- a button that displays a blog (hardcoded id) for testing, idk how to incorporate this as a link for each blog rn --> 
-        <form action="/displayblog">
+
+        <!-- a button that displays a blog (hardcoded id) for testing, idk how to incorporate this as a link for each blog rn -->
+        <form action="/displayblog/andrew", method="POST">
             <input type="submit" name="sub1" value="Display (testing)">
         </form> <br>
 
