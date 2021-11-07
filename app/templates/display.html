@@ -12,18 +12,23 @@ P00 -- Web Log Hosting Site
 
     <body>
         <h1> Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu </h1>
-        <h1> Waaaa hooo HAAAH, {{username}} </h1>
-        
+        <h1> {{user}}'s Page </h1>
+
         <!-- link to go back to homepage -->
         <a href="{{ url_for('disp_loginpage') }}">Back to Homepage</a>
-        <br>
+        <br><br>
         <!-- button to logout -->
         <form action="/logout">
             <input type="submit" name="sub1" value="Logout">
-        </form> 
+        </form>
         <br>
         <!-- Display Blog Here -->
         <h1> {{title}} </h1>
+        {% for title,content in titles_content %}
+            <h3>{{ title }}</h3>
+            <p>{{ content}}</p>
+            <br>
+        {% endfor %}
         <br>
         {{content}}
 

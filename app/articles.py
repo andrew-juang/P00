@@ -30,7 +30,7 @@ def create_blog(title,text,username):
     db.commit()
 
 def generate_id():
-    ''' Generate random ID for blog '''
+    ''' Generate random ID for user '''
 
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
@@ -56,9 +56,10 @@ def delete_blog():
 
     return True
 
+
 def fetch_blogs():
     ''' Fetch list of blog names '''
-    
+
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     c.execute("SELECT blognames FROM blogs")
@@ -67,25 +68,39 @@ def fetch_blogs():
         blogs.append(a_tuple[0])
     return blogs
 
+
+def get_ids(username):
+    ''' Returns the blog ids of the user '''
+
+    ids = []
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("SELECT * FROM blogs")
+    for a_tuple in c.fetchall():
+        if(a_tuple[0] == username):
+            ids.append(a_tuple[2])
+    return ids;
+
 def get_title_from_id(blogID):
     ''' returns the title of corrresponding blog using the blog id '''
-    
+
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     c.execute("SELECT blognames FROM blogs WHERE id = "+ str(blogID))
     for content in c.fetchall():
         return content[0]
-    
+
+
 def get_content_from_id(blogID):
     ''' returns the content of corrresponding blog using the blog id '''
-    
+
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     c.execute("SELECT content FROM blogs WHERE id = "+ str(blogID))
     for content in c.fetchall():
         return content[0]
-    
-    
+
+
 # TESTS
 create_db()
 db = sqlite3.connect(DB_FILE)

@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 
 from app import app
 from app.auth import auth_user, create_user, create_db
-from app.articles import create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id, get_content_from_id
+from app.articles import create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id, get_content_from_id, get_ids
 
 @app.route("/", methods=['GET', 'POST'])
 def disp_loginpage():
@@ -104,7 +104,7 @@ def logout():
 @app.route("/create", methods=['GET','POST'])
 def create():
     ''' Displays create blog page '''
-    
+
     # user is logged in and is allowed to create
     if 'username' in session:
         return render_template('create.html')
@@ -121,7 +121,7 @@ def createblog():
     title = request.form.get('Title')
     text = request.form.get('Body')
 
-    # TODO: CHECK if field is empty 
+    # TODO: CHECK if field is empty
     if method == 'POST':
         create_blog(title,text,session['username'])
 
@@ -130,12 +130,17 @@ def createblog():
 @app.route("/displayblog")
 def displayblog():
     ''' route for displaying a blog page '''
-    
+    titles = []
+    content = []
+    ids = []
+
+    print(session['username'])
     # hardcoded a blog i have in the database for testing rn
-    blogID = 766114
-    
-    title = get_title_from_id(blogID)
-    content = get_content_from_id(blogID)
-    
+    ids = get_ids(session['username'])
+    print(ids)
+    for id in ids:
+        titles.append(get_title_from_id(id))
+        content.append(get_content_from_id(id))
+
     # displays the blog with title and content using display template
-    return render_template('display.html', title = title, content = content)
+    return render_template('display.html', user = session['username'], titles_content = zip(titles,content))
