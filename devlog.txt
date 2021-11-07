@@ -134,3 +134,10 @@ qinaL -- 2021-11-05 22:01
     - a display(testing) button is added to response.html to test displayblog
     - currently just has one blog id hardcoded for testing; idk how to incorporate as a link for each blog page yet
 - added get_title_from_id and get_content_from_id in article.py, which are used in displayblog
+
+andrewJ -- 2021-11-07 11:57
+- fixed qinas display template
+- fixed display blog function
+    - correctly displays information 
+    - takes different users as parameters to display their blogs
+- index page urls work now
