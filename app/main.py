@@ -157,14 +157,14 @@ def displayblog(blogtitle):
     
 
 '''    
-@app.route("/updateblog", methods=['GET', 'POST'])
+@app.route("/updateblog/<blogid>", methods=['GET', 'POST'])
 def updateblog():
     method = request.method
     entryname = request.form.get('Entryname')
     text = request.form.get('Body')
     
     if method == 'POST':
-        update_blog(session['username'],entryname, text)
+        update_blog(session['username'],blogid, entryname, text)
     
     return redirect(url_for('disp_loginpage'))
 '''

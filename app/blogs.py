@@ -65,7 +65,7 @@ def blog_exist(title, username):
     return id;
 
 
-def update_blog(username,entryname,text):
+def update_blog(username,id,entryname,text):
     ''' Updates blog '''
     '''
     db = sqlite3.connect(DB_FILE)
