@@ -53,7 +53,7 @@ def generate_id():
         return id
     '''
     while id in blogids:
-        id = random.randint(0,999999)
+        id++
     return id
 
 
@@ -65,9 +65,14 @@ def blog_exist(title, username):
     return id;
 
 
-def update_blog():
+def update_blog(username,entryname,text):
     ''' Updates blog '''
-
+    '''
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?, ?);", (username, title, id, entryname, text))
+    db.commit()
+    '''
     return True
 
 
@@ -130,6 +135,7 @@ def fetch_users():
     for a_tuple in c.fetchall():
         users.append(a_tuple[0])
     return users
+    
 
 
 # TESTS
