@@ -25,6 +25,7 @@ def create_blog(title,text,username):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     id = generate_id()
+    #id = generate_id(title, username)
     c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?);", (username, title, id, text))
 
     db.commit()
@@ -35,15 +36,32 @@ def generate_id():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    id = random.randint(0,999999)
+    id = 0
     c.execute("SELECT id FROM blogs")
     blogids = []
     for a_tuple in c.fetchall():
         blogids.append(a_tuple[0])
+    '''
+    id = blog_exists(title,username)
+    if id:
+        return id;
+    else:
+        while id in blogids:
+            id++
+        return id
+    '''
     while id in blogids:
         id = random.randint(0,999999)
     return id
 
+'''
+def blog_exist(title, username):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    database = []
+    c.execute("SELECT id FROM blogs WHERE usernames = username AND blognames = title")
+    return id;
+'''
 
 def update_blog():
     ''' Updates blog '''
