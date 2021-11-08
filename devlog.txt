@@ -141,3 +141,8 @@ andrewJ -- 2021-11-07 11:57
     - correctly displays information 
     - takes different users as parameters to display their blogs
 - index page urls work now
+
+ericG -- 2021-11-08 2:42
+- added helper function blog_exists
+- blog_exists returns an id if the blog already exists
+- potential way of using to create update_blog, needs more testing
