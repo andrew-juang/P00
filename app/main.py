@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 
 from app import app
 from app.auth import auth_user, create_user, create_db
-from app.articles import create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id, get_content_from_id, get_ids, fetch_users
+from app.blogs import create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id, get_content_from_id, get_ids, fetch_users
 
 @app.route("/", methods=['GET', 'POST'])
 def disp_loginpage():
@@ -120,30 +120,37 @@ def createblog():
 
     method = request.method
     title = request.form.get('Title')
+    entryname = request.form.get('Entryname')
     text = request.form.get('Body')
 
     # TODO: CHECK if field is empty
     if method == 'POST':
-        create_blog(title,text,session['username'])
+        create_blog(title,text,session['username'],entryname)
 
     return redirect(url_for('disp_loginpage'))
 
-@app.route("/displayblog/<username>", methods=['GET', 'POST'])
-def displayblog(username):
+@app.route("/dashboard/<username>", methods=['GET', 'POST'])
+def dashboard(username):
     ''' route for displaying a blog page '''
 
     if not bool(username):
-        return redirect(url_for('displayblog', username=session['username']))
+        return redirect(url_for('dashboard', username=session['username']))
     titles = []
     content = []
     ids = []
     print(username)
-    # hardcoded a blog i have in the database for testing rn
+
     ids = get_ids(username)
     print(ids)
     for id in ids:
         titles.append(get_title_from_id(id))
-        content.append(get_content_from_id(id))
 
     # displays the blog with title and content using display template
-    return render_template('display.html', user = username, titles_content = zip(titles,content))
+    return render_template('display.html', user = username, titles = titles)
+
+
+@app.route("/display/<blogtitle>", methods=['GET', 'POST'])
+def displayblog(blogtitle):
+    ''' Display a blog and each of its entries '''
+
+    return

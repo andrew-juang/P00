@@ -2,7 +2,7 @@
 # SoftDev
 # P00 -- Web Log Hosting Site
 
-""" Article Database """
+""" Blogs Database """
 
 import sqlite3
 import random
@@ -15,18 +15,19 @@ def create_db():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    c.execute("CREATE TABLE IF NOT EXISTS blogs (usernames TEXT, blognames TEXT, id INTEGER, content TEXT);")
+    c.execute("CREATE TABLE IF NOT EXISTS blogs (usernames TEXT, blognames TEXT, id INTEGER, entryname TEXT, content TEXT);")
+    # c.execute("CREATE TABLE IF NOT EXISTS blogs (usernames TEXT, blognames TEXT, id INTEGER, content TEXT);")
     db.close()
 
 
-def create_blog(title,text,username):
+def create_blog(title,text,username, entryname):
     ''' Publishes a blog '''
 
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     id = generate_id()
     #id = generate_id(title, username)
-    c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?);", (username, title, id, text))
+    c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?, ?);", (username, title, id, entryname, text))
 
     db.commit()
 
@@ -41,6 +42,7 @@ def generate_id():
     blogids = []
     for a_tuple in c.fetchall():
         blogids.append(a_tuple[0])
+
     '''
     id = blog_exists(title,username)
     if id:
@@ -54,14 +56,14 @@ def generate_id():
         id = random.randint(0,999999)
     return id
 
-'''
+
 def blog_exist(title, username):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     database = []
     c.execute("SELECT id FROM blogs WHERE usernames = username AND blognames = title")
     return id;
-'''
+
 
 def update_blog():
     ''' Updates blog '''

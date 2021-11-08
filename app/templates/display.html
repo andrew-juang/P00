@@ -22,12 +22,12 @@ P00 -- Web Log Hosting Site
             <input type="submit" name="sub1" value="Logout">
         </form>
         <br>
-        <h2>Entries</h2>
+        <h2>Blogs</h2>
         <!-- Display Entries Here -->
         <h1> {{title}} </h1>
-        {% for title,content in titles_content %}
+        {% for title in titles %}
+        <!--Make this into a link to display blog -->
             <h3>{{ title }}</h3>
-            <p>{{ content}}</p>
             <br>
         {% endfor %}
         <br>
