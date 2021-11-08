@@ -154,3 +154,18 @@ def displayblog(blogtitle):
     ''' Display a blog and each of its entries '''
 
     return
+    
+
+'''    
+@app.route("/updateblog", methods=['GET', 'POST'])
+def updateblog():
+    method = request.method
+    entryname = request.form.get('Entryname')
+    text = request.form.get('Body')
+    
+    if method == 'POST':
+        update_blog(session['username'],entryname, text)
+    
+    return redirect(url_for('disp_loginpage'))
+'''
+
