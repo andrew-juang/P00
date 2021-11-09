@@ -151,4 +151,12 @@ ericG -- 2021-11-08 2:42
 andrewJ, noakaiA, ericG, qinaL -- 2021-11-08 9:23
 - added additional column in database for entry name
 - planned how to distinguish between blogs and entries 
+- changed current displayblog function to dashboard function
 - began display blog function
+
+qinaL
+- changed name of display.html to dashboard.html
+- created display.html 
+- added code for display blog function
+- created fetch_entry_names and fetch_entry_contents for display blog
+- added a display (testing) button with a hardcoded blog to test 
