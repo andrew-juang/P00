@@ -1,23 +1,23 @@
 * {
-
+  font-family: Segoe UI;
+  font-weight: normal;
 }
 
 .header {
-  background-color: #6BBDED;
+  background-color: #EDEDED;
   padding: 2%;
   text-align: center;
   font-size: xx-large;
   margin-left: 1%;
   margin-bottom: 1%;
-  margin-top: 1.5%;
+  margin-top: 2%;
   width: 94%;
   height: 10%;
   border-radius: 4px;
-  font-family: Georgia;
 }
 
 .authForm {
-  background-color: #6BBDED;
+  background-color: #EDEDED;
   padding: 2%;
   padding-top: 1%;
   font-size: large;
@@ -27,7 +27,15 @@
   width: 94%;
   height: 10%;
   border-radius: 4px;
-  font-family: Georgia;
+}
+
+#create_option {
+  padding-top: 2%;
+
+}
+
+label {
+font-size: 80%;
 }
 
 input[type=text] {
@@ -43,9 +51,31 @@ input[type=text] {
 input[type=submit] {
   background-color: #4CAF50;
   color: white;
-  padding: 14px 20px;
+  padding: 12px 20px;
   margin: 8px 0;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+input[type=submit]:hover {
+  transition-duration: .3s;
+  background-color: #58C55C;
+  color: white
+}
+
+a:link {
+text-decoration: none
+}
+
+a:visited {
+  color: 551A8B;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
 }
