@@ -8,14 +8,15 @@ P00 -- Web Log Hosting Site
 <html>
     <head>
         <title> LOGIN PAGE </title>
+        <link rel="stylesheet" href="bad.css">
     </head>
 
     <body>
-        <h1> Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu </h1>
-        <h1> Welcome, Travelers of the Intertoobz </h1>
-        <h3> Enter your username and password below to proceed.</h3>
+        <h1 class="header"> Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu <br><br>
+        Welcome, Travelers of the Intertoobz </h1>
 
-        <form action="/auth", method="POST">
+        <form action="/auth", method="POST", class="authForm">
+            <h3> Enter your username and password below to proceed</h3>
             <label>Username: </label><br>
             <input type="text" name="username"><br>
             <label>Password: </label><br>
