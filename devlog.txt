@@ -153,6 +153,11 @@ andrewJ, noakaiA, ericG, qinaL -- 2021-11-08 9:23
 - changed current displayblog function to dashboard function
 - began display blog function
 
+ericG -- 2021-11-08 11:30
+- begun work on update blog, needs further testing
+- made the route from homepage, need a way to get an input from the button
+- cleaned up generate_id to allow for infinite ids
+
 qinaL -- 2021-11-08 19:04
 - changed name of display.html to dashboard.html
 - created display.html 
@@ -163,3 +168,7 @@ qinaL -- 2021-11-08 19:04
 andrewJ -- 2021-11-08 19:50
 - implemented create entry
 - fixed random bugs 
+
+ericG -- 2021-11-08 11:45
+- fixed syntax errors in my previous code that I did not see
+- fixed some errors in update_blog
