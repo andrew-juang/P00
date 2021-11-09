@@ -147,7 +147,6 @@ ericG -- 2021-11-08 2:42
 - blog_exists returns an id if the blog already exists
 - potential way of using to create update_blog, needs more testing
 
-
 andrewJ, noakaiA, ericG, qinaL -- 2021-11-08 9:23
 - added additional column in database for entry name
 - planned how to distinguish between blogs and entries 
@@ -160,3 +159,7 @@ qinaL -- 2021-11-08 19:04
 - added code for display blog function
 - created fetch_entry_names and fetch_entry_contents for display blog
 - added a display (testing) button with a hardcoded blog to test 
+
+andrewJ -- 2021-11-08 19:50
+- implemented create entry
+- fixed random bugs 
