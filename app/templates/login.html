@@ -17,10 +17,8 @@ P00 -- Web Log Hosting Site
 
         <form action="/auth", method="POST", class="standardBlock">
             <h4> Enter your username and password below to proceed</h4>
-            <label>Username: </label><br>
-            <input type="text" name="username"><br>
-            <label>Password: </label><br>
-            <input type="text" name="password"><br><br>
+            <input type="text" name="username", placeholder="Username"><br>
+            <input type="text" name="password" placeholder="Password"><br><br>
             <input type="submit" name="sub1" value="Login">
         </form>
         <h4 class="standardBlock" id="create_option"> New user? <a href="{{ url_for('register') }}">Create an account.</a> </h4>
