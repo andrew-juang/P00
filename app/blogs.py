@@ -53,7 +53,7 @@ def generate_id():
         return id
     '''
     while id in blogids:
-        id++
+        id += 1
     return id
 
 
@@ -136,7 +136,32 @@ def fetch_users():
         users.append(a_tuple[0])
     return users
     
-
+    #idk if this works yet
+def fetch_entry_names(blogtitle):
+    ''' retrieves all entries names in database that belongs to the specified blog (has the specified blog title)
+    '''
+    
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("SELECT entryname FROM blogs WHERE blognames = '" + blogtitle + "'")
+    names = []
+    print("this is entries")
+    for a_tuple in c.fetchall():
+        names.append(a_tuple[0])
+    return names
+ 
+def fetch_entry_contents(blogtitle):
+    ''' retrieves all entries names in database that belongs to the specified blog (has the specified blog title)
+    '''
+    
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("SELECT content FROM blogs WHERE blognames = '" + blogtitle + "'")
+    contents = []
+    for a_tuple in c.fetchall():
+        contents.append(a_tuple[0])
+    return contents
+    
 
 # TESTS
 create_db()
@@ -144,8 +169,9 @@ db = sqlite3.connect(DB_FILE)
 c = db.cursor()
 db.commit()
 c.execute("SELECT * FROM blogs")
-print(c.fetchall())
+#print(c.fetchall())
 blogs = []
 for a_tuple in c.fetchall():
-    blogs.append(a_tuple[0])
+    blogs.append(a_tuple)
 print(blogs)
+

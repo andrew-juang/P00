@@ -7,12 +7,12 @@ P00 -- Web Log Hosting Site
 
 <html>
     <head>
-        <title> DISPLAY PAGE </title>
+        <title> DASHBOARD PAGE </title>
     </head>
 
     <body>
         <h1> Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu </h1>
-        <h1> {{blogtitle}} </h1>
+        <h1> {{user}}'s DASHBOARD </h1>
 
         <!-- link to go back to homepage -->
         <a href="{{ url_for('disp_loginpage') }}">Back to Homepage</a>
@@ -22,10 +22,12 @@ P00 -- Web Log Hosting Site
             <input type="submit" name="sub1" value="Logout">
         </form>
         <br>
+        <h2>Blogs</h2>
         <!-- Display Entries Here -->
-        {% for entryname, content in entries %}
-            <h2> {{entryname}} </h2>
-            {{ content }}
+        <h1> {{title}} </h1>
+        {% for title in titles %}
+        <!--Make this into a link to display blog -->
+            <h3>{{ title }}</h3>
             <br>
         {% endfor %}
         <br>
