@@ -119,6 +119,9 @@ _*
 .Spotlight*
 .Trashes
 
+# DB file
+*.db
+
 # Windows Files #
 Thumbs.db
 ehthumbs.db
@@ -126,3 +129,5 @@ ehthumbs.db
 # Filenames with special characters
 **/*[\\/\:;*?!'"<>|$º•¶§∞¢£]*
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
