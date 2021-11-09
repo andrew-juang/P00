@@ -78,3 +78,11 @@ a:hover {
 a:active {
   text-decoration: underline;
 }
+
+.logout {
+  background-color: #D45653 !important;
+}
+
+.logout:hover {
+  background-color: #E25B57 !important;
+}
