@@ -17,17 +17,20 @@ P00 -- Web Log Hosting Site
         <!-- link to go back to homepage -->
         <a href="{{ url_for('disp_loginpage') }}">Back to Homepage</a>
         <br><br>
-        <!-- button to logout -->
-        <form action="/logout">
-            <input type="submit" name="sub1" value="Logout">
-        </form>
-        <br>
         <!-- Display Entries Here -->
         {% for entryname, content in entries %}
             <h2> {{entryname}} </h2>
             {{ content }}
             <br>
         {% endfor %}
+        <br>
+        <form action="/create2">
+            <input type="submit" name="sub1" value="Create Entry">
+        </form><br>
+        <!-- button to logout -->
+        <form action="/logout">
+            <input type="submit" name="sub1" value="Logout">
+        </form>
         <br>
     </body>
 

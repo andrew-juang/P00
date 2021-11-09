@@ -12,30 +12,36 @@ P00 -- Web Log Hosting Site
 
     <body>
         <h1> Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu </h1>
-        <h1> Waaaa hooo HAAAH, {{username}} </h1>
+        <h1> Waaaa hooo HAAAH, {{username}} </h1><br>
+
         <form action ="/create", method="POST">
             <input type="submit" name="sub1" value="Create Blog">
         </form> <br>
 
         <!-- Fetches blogs from database and creates table of blogs here -->
-        <h1> List of Dashboard </h1>
+        <h1> Dashboard Tests </h1>
         {% for blogname,user in blogs_users %}
             <a href="{{ url_for('dashboard', username=user) }}">{{ blogname }}</a>
             <br>
         {% endfor %}
-        <form action="/logout">
-            <input type="submit" name="sub1" value="Logout">
-        </form> <br>
-
+        <br>
         <!-- a button that displays a blog (hardcoded id) for testing, idk how to incorporate this as a link for each blog rn -->
         <form action="/dashboard/andrew", method="POST">
             <input type="submit" name="sub1" value="Dashboard (testing)">
         </form> <br>
-        
+
+        <h1> List of Blogs </h1>
+        <!-- {% for blogname,user in blogs_users %}
+            <a href="{{ url_for('dashboard', username=user) }}">{{ blogname }}</a>
+            <br>
+        {% endfor %} -->
         <form action="/display/journal", method="POST">
             <input type="submit" name="sub1" value="Display (testing)">
+        </form> <br><br>
+
+        <form action="/logout">
+            <input type="submit" name="sub1" value="Logout">
         </form> <br>
-      
     </body>
 
 </html>

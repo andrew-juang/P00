@@ -129,14 +129,15 @@ def createblog():
 
     return redirect(url_for('disp_loginpage'))
 
+
 @app.route("/dashboard/<username>", methods=['GET', 'POST'])
 def dashboard(username):
     ''' route for displaying a user's dashboard '''
-    
+
     # gets username from session
     if not bool(username):
         return redirect(url_for('dashboard', username=session['username']))
-    
+
     titles = []
     content = []
     ids = []
@@ -154,17 +155,43 @@ def dashboard(username):
 @app.route("/display/<blogtitle>", methods=['GET', 'POST'])
 def displayblog(blogtitle):
     ''' Display a blog and each of its entries '''
-    
-    # retrieves all entries associated with the blog 
+
+    # retrieves all entries associated with the blog
     entrynames = fetch_entry_names(blogtitle)
     entrycontents = fetch_entry_contents(blogtitle)
-    
+
     print("entries")
     print(entrynames)
     print(entrycontents)
-    
+
     # displays blog with entry content using display template
     return render_template('display.html', blogtitle = blogtitle, entries = zip(entrynames, entrycontents))
+
+
+@app.route("/create2")
+def create2():
+    ''' Displays Creates Entry Page'''
+
+    # user is logged in and is allowed to create
+    if 'username' in session:
+        return render_template('createentry.html')
+    # user is not logged in and redirected to login page (catches error when user tries to go directly to /create w/o logging in)
+    else:
+        return redirect(url_for('disp_loginpage'))
+
+# HARDCODED FOR NOW
+@app.route("/createentry", methods=['GET', 'POST'])
+def createentry():
+    ''' Creates entry '''
+
+    method = request.method
+    title = 'journal'
+    entryname = request.form.get('Entryname')
+    text = request.form.get('Body')
+
+    if method == 'POST':
+        create_blog(title,text,session['username'],entryname)
+    return redirect(url_for('displayblog', blogtitle='journal'))
 
 '''
 @app.route("/updateblog/<blogid>", methods=['GET', 'POST'])
@@ -172,10 +199,10 @@ def updateblog():
     method = request.method
     entryname = request.form.get('Entryname')
     text = request.form.get('Body')
-    
+
     if method == 'POST':
         update_blog(session['username'],blogid, entryname, text)
-    
+
     return redirect(url_for('disp_loginpage'))
 
 '''
