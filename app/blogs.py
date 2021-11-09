@@ -63,17 +63,17 @@ def blog_exist(title, username):
     c = db.cursor()
     database = []
     c.execute("SELECT id FROM blogs WHERE usernames = username AND blognames = title")
-    return id;
+    return id
 
 
 def update_blog(username,id,entryname,text):
     ''' Updates blog '''
-
+    '''
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?, ?);", (username, title, id, entryname, text))
     db.commit()
-
+    '''
     return True
 
 
@@ -105,7 +105,7 @@ def get_ids(username):
     for a_tuple in c.fetchall():
         if(a_tuple[0] == username):
             ids.append(a_tuple[2])
-    return ids;
+    return ids
 
 def get_title_from_id(blogID):
     ''' returns the title of corrresponding blog using the blog id '''
