@@ -18,10 +18,14 @@ P00 -- Web Log Hosting Site
             <input type="submit" name="sub1" value="Create Blog">
         </form> <br>
 
-        <!-- Fetches blogs from database and creates table of blogs here -->
+        <!-- Fetches blogs from database and creates list of all blog in database with format of
+                Title by User -->
         <h1> Dashboard Tests </h1>
         {% for blogname,user in blogs_users %}
-            <a href="{{ url_for('dashboard', username=user) }}">{{ blogname }}</a>
+            <!-- blog title with link to display blog -->
+            <a href="{{ url_for('displayblog', blogtitle=blogname) }}">{{ blogname }}</a> by 
+            <!-- user that created the blog with link to user's dashboard-->
+            <a href="{{ url_for('dashboard', username=user) }}">{{ user}}</a> 
             <br>
         {% endfor %}
         <br>
@@ -30,11 +34,13 @@ P00 -- Web Log Hosting Site
             <input type="submit" name="sub1" value="Dashboard (testing)">
         </form> <br>
 
+        <!--
         <h1> List of Blogs </h1>
-        <!-- {% for blogname,user in blogs_users %}
-            <a href="{{ url_for('dashboard', username=user) }}">{{ blogname }}</a>
+        {% for blogname, user in blogs_users %}
+            <a href="{{ url_for('displayblog', blogtitle=blogname) }}">{{ blogname }}</a> by {{user}}
             <br>
         {% endfor %} -->
+        
         <form action="/display/journal", method="POST">
             <input type="submit" name="sub1" value="Display (testing)">
         </form> <br><br>
