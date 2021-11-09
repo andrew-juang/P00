@@ -178,3 +178,9 @@ qinaL -- 2021-11-09 8:23
     - added "by user" after each blog title to indicate who made it 
     - blog titles now link to display blog instead of the users dashboard
     - user is linked to show user's dashboard
+
+noakaiA -- 2021-11-09 1:30
+- css all done. 
+- made some small changes to overall html layouts
+- getting the logout button to be red instead of green was harder than it should have been.
+- questioned whether we should have out team name and roster on every main page of the site
