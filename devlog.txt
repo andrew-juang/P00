@@ -172,3 +172,9 @@ andrewJ -- 2021-11-08 19:50
 ericG -- 2021-11-08 11:45
 - fixed syntax errors in my previous code that I did not see
 - fixed some errors in update_blog
+
+qinaL -- 2021-11-09 8:23
+- in response.html (the home page)
+    - added "by user" after each blog title to indicate who made it 
+    - blog titles now link to display blog instead of the users dashboard
+    - user is linked to show user's dashboard
