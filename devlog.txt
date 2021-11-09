@@ -154,7 +154,7 @@ andrewJ, noakaiA, ericG, qinaL -- 2021-11-08 9:23
 - changed current displayblog function to dashboard function
 - began display blog function
 
-qinaL
+qinaL -- 2021-11-08 19:04
 - changed name of display.html to dashboard.html
 - created display.html 
 - added code for display blog function
