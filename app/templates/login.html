@@ -15,7 +15,7 @@ P00 -- Web Log Hosting Site
         <h1 class="header"> Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu <br>
         Welcome, Travelers of the Intertoobz </h1>
 
-        <form action="/auth", method="POST", class="authForm">
+        <form action="/auth", method="POST", class="standardBlock">
             <h4> Enter your username and password below to proceed</h4>
             <label>Username: </label><br>
             <input type="text" name="username"><br>
@@ -23,7 +23,7 @@ P00 -- Web Log Hosting Site
             <input type="text" name="password"><br><br>
             <input type="submit" name="sub1" value="Login">
         </form>
-        <h4 class="authForm" id="create_option"> New user? <a href="{{ url_for('register') }}">Create an account.</a> </h4>
+        <h4 class="standardBlock" id="create_option"> New user? <a href="{{ url_for('register') }}">Create an account.</a> </h4>
         {% if input == "success" %}
             <p style="color:green">*Registration successful! Please login.</p>
         {% elif input == "bad_user" %}
