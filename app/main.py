@@ -151,7 +151,7 @@ def dashboard(username):
     # displays the dashboard with title and content using dashboard template
     return render_template('dashboard.html', user = username, titles = titles)
 
-    # idk if this works yet
+
 @app.route("/display/<blogtitle>", methods=['GET', 'POST'])
 def displayblog(blogtitle):
     ''' Display a blog and each of its entries '''
@@ -164,7 +164,7 @@ def displayblog(blogtitle):
     print(entrynames)
     print(entrycontents)
 
-    # displays blog with entry content using display template
+    # displays blog with entry names and content using display template
     return render_template('display.html', blogtitle = blogtitle, entries = zip(entrynames, entrycontents))
 
 
