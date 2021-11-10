@@ -168,30 +168,29 @@ def displayblog(blogtitle):
     return render_template('display.html', blogtitle = blogtitle, entries = zip(entrynames, entrycontents))
 
 
-@app.route("/create2")
-def create2():
+@app.route("/create2/<blogtitle>")
+def create2(blogtitle):
     ''' Displays Creates Entry Page'''
 
     # user is logged in and is allowed to create
     if 'username' in session:
-        return render_template('createentry.html')
+        return render_template('createentry.html', blogtitle=blogtitle)
     # user is not logged in and redirected to login page (catches error when user tries to go directly to /create w/o logging in)
     else:
         return redirect(url_for('disp_loginpage'))
 
 # HARDCODED FOR NOW
-@app.route("/createentry", methods=['GET', 'POST'])
-def createentry():
+@app.route("/createentry/<blogtitle>", methods=['GET', 'POST'])
+def createentry(blogtitle):
     ''' Creates entry '''
 
     method = request.method
-    title = 'journal'
     entryname = request.form.get('Entryname')
     text = request.form.get('Body')
 
     if method == 'POST':
         create_blog(title,text,session['username'],entryname)
-    return redirect(url_for('displayblog', blogtitle='journal'))
+    return redirect(url_for('displayblog', blogtitle=blogtitle))
 
 '''
 @app.route("/updateblog/<blogid>", methods=['GET', 'POST'])

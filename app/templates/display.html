@@ -25,9 +25,7 @@ P00 -- Web Log Hosting Site
             <br>
         {% endfor %}
         <br>
-        <form action="/create2">
-            <input type="submit" name="sub1" value="Create Entry">
-        </form><br>
+        <a href="{{ url_for('create2', blogtitle=blogtitle) }}">Create Entry</a>
         <!-- button to logout -->
         <form action="/logout">
             <input type="submit" name="sub1" value="Logout" class="logout">
