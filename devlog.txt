@@ -189,3 +189,6 @@ noakaiA -- 2021-11-09 1:30
 - made some small changes to overall html layouts
 - getting the logout button to be red instead of green was harder than it should have been.
 - questioned whether we should have out team name and roster on every main page of the site
+
+qinaL -- 2021-11-10 13:39
+- made the list of blogs in dashboard into links 
