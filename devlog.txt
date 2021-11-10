@@ -179,6 +179,11 @@ qinaL -- 2021-11-09 8:23
     - blog titles now link to display blog instead of the users dashboard
     - user is linked to show user's dashboard
 
+andrewJ, ericG, qinaL, noakaiA -- 2021-11-09 9:20
+- Begun work on displaying update and edit properly due to bugs
+- Bug fixes
+- Working on updating design document
+
 noakaiA -- 2021-11-09 1:30
 - css all done. 
 - made some small changes to overall html layouts
