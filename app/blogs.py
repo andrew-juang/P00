@@ -120,6 +120,16 @@ def fetch_user_blogs(username):
 
     return blogs
 
+def get_user_from_title(blogtitle):
+    ''' Fetch user from blog title'''
+
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("SELECT * FROM blogs")
+    for a_tuple in c.fetchall():
+        if a_tuple[1] == blogtitle:
+            return a_tuple[0]
+    return -1
 
 def get_ids(username):
     ''' Returns the blog ids of the user '''

@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 
 from app import app
 from app.auth import auth_user, create_user, create_db
-from app.blogs import create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id, get_content_from_id, get_ids, fetch_entry_names, fetch_entry_contents, fetch_user_blogs
+from app.blogs import create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id, get_content_from_id, get_ids, fetch_entry_names, fetch_entry_contents, fetch_user_blogs, get_user_from_title
 
 @app.route("/", methods=['GET', 'POST'])
 def disp_loginpage():
@@ -146,13 +146,10 @@ def displayblog(blogtitle):
     # retrieves all entries associated with the blog
     entrynames = fetch_entry_names(blogtitle.replace("-"," "))
     entrycontents = fetch_entry_contents(blogtitle.replace("-"," "))
-
-    print("entries")
-    print(entrynames)
-    print(entrycontents)
+    is_own_page = (session['username'] == get_user_from_title(blogtitle.replace("-"," ")))
 
     # displays blog with entry names and content using display template
-    return render_template('display.html', blogtitle = blogtitle.replace(" ","-"), entries = zip(entrynames, entrycontents))
+    return render_template('display.html', blogtitle = blogtitle.replace(" ","-"), entries = zip(entrynames, entrycontents), is_own_page=is_own_page)
 
 
 @app.route("/create2", methods=['GET', 'POST'])
