@@ -10,7 +10,7 @@ from app import app
 from app.auth import auth_user, create_user, create_db
 from app.blogs import ( create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id,
                         get_content_from_id, get_ids, fetch_entry_names, fetch_entry_contents,
-                        fetch_user_blogs, get_user_from_title, delete_blog, auth_blog)
+                        fetch_user_blogs, get_user_from_title, delete_blog, auth_blog, auth_entry)
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
@@ -187,7 +187,7 @@ def createentry():
     entryname = request.form.get('Entryname')
     text = request.form.get('Body')
 
-    if auth_blog(method,title,entryname,text) and method == 'POST':
+    if auth_entry(method,title,entryname,text) and method == 'POST':
         create_blog(title.replace("-"," "),text,session['username'],entryname)
         return redirect(url_for('displayblog', blogtitle=title))
     else:
