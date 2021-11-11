@@ -219,9 +219,9 @@ def editentry():
 
     title = request.form.get('blogtitle')
     print(title)
-    entryname = request.form.get('Entryname')
+    entryname = request.form.get('Entryname').replace("-", " ")
     print(entryname)
-    entrycontents = request.form.get('content')
+    entrycontents = request.form.get('content').replace("-", " ")
     print(entrycontents)
 
     if 'username' in session:

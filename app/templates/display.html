@@ -42,8 +42,8 @@ P00 -- Web Log Hosting Site
                 <form style="display: inline;" action="/editentry", method="POST">
                     <input type="submit" name="sub1" value="Edit Entry">
                     <input type="hidden" name="blogtitle" value={{blogtitle}}>
-                    <input type="hidden" name="Entryname" value={{entryname}}>
-                    <input type="hidden" name="content" value={{content}}>
+                    <input type="hidden" name="Entryname" value={{entryname.replace(' ','-')}}>
+                    <input type="hidden" name="content" value={{content.replace(' ','-')}}>
                 </form>
                 {% endif %}
 
