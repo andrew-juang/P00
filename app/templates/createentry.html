@@ -21,11 +21,11 @@ P00 -- Web Log Hosting Site
     <body>
         <h1 class="header"> Add An Entry <h1><br>
         <!-- FIX THIS  -->
-        <form action = "/createentry", method="POST">
+        <form action = "/createentry" method="POST" id="create">
             <label>Entry Name</label><br>
             <input type="text" name="Entryname"><br><br>
             <label>Content</label><br>
-            <input type="text" name="Body"><br>
+            <textarea form="create" rows="10"></textarea>
             <input type="hidden" name="Blogtitle" value={{blogtitle}}>
             <input type="submit" name="sub1" value="Post Entry">
             <!-- <a href="{{ url_for('createentry', blogtitle=blogtitle) }}">Create Entry</a> -->
