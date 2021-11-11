@@ -136,7 +136,7 @@ def dashboard(username):
     titles = fetch_user_blogs(username)
 
     # displays the dashboard with title and content using dashboard template
-    return render_template('dashboard.html', user = username, titles = titles)
+    return render_template('dashboard.html', user = username.replace(" ","-"), titles = titles)
 
 
 @app.route("/display/<blogtitle>", methods=['GET', 'POST'])

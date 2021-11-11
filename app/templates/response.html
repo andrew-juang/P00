@@ -21,7 +21,7 @@ P00 -- Web Log Hosting Site
 
         <!-- Fetches blogs from database and creates list of all blog in database with format of
                 Title by User -->
-        <h1> Dashboard Tests </h1>
+        <h1> List of Blogs </h1>
         {% for blogname,user in blogs_users %}
             <!-- blog title with link to display blog -->
             <a href="{{ url_for('displayblog', blogtitle=blogname.replace(" ", "-")) }}">{{ blogname }}</a> by
@@ -30,21 +30,6 @@ P00 -- Web Log Hosting Site
             <br>
         {% endfor %}
         <br>
-        <!-- a button that displays a blog (hardcoded id) for testing, idk how to incorporate this as a link for each blog rn -->
-        <form action="/dashboard/andrew", method="POST">
-            <input type="submit" name="sub1" value="Dashboard (testing)">
-        </form> <br>
-
-        <!--
-        <h1> List of Blogs </h1>
-        {% for blogname, user in blogs_users %}
-            <a href="{{ url_for('displayblog', blogtitle=blogname) }}">{{ blogname }}</a> by {{user}}
-            <br>
-        {% endfor %} -->
-
-        <form action="/display/journal", method="POST">
-            <input type="submit" name="sub1" value="Display (testing)">
-        </form> <br><br>
 
         <form action="/logout">
             <input type="submit" name="sub1" value="Logout" class="logout">

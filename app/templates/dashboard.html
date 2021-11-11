@@ -26,8 +26,8 @@ P00 -- Web Log Hosting Site
         <h2>{{user}}'s Blogs</h2>
         <!-- Display list of user's blogs here -->
         {% for title in titles %}
-        <!-- each blog is a link that will lead to display such blog --> 
-        <h3> <a href= "{{ url_for('displayblog', blogtitle = title) }}">{{ title }}</a></h3>
+        <!-- each blog is a link that will lead to display such blog -->
+        <h3> <a href= "{{ url_for('displayblog', blogtitle = title.replace(" ","-")) }}">{{ title }}</a></h3>
         {% endfor %}
         <br>
     </body>
