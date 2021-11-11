@@ -60,7 +60,7 @@ input[type=submit] {
 input[type=submit]:hover {
   transition-duration: .3s;
   background-color: #58C55C;
-  color: white
+  color: white;
 }
 
 a:link {
