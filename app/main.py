@@ -180,17 +180,18 @@ def create2(blogtitle):
         return redirect(url_for('disp_loginpage'))
 
 # HARDCODED FOR NOW
-@app.route("/createentry/<blogtitle>", methods=['GET', 'POST'])
-def createentry(blogtitle):
+@app.route("/createentry", methods=['GET', 'POST'])
+def createentry():
     ''' Creates entry '''
 
     method = request.method
     entryname = request.form.get('Entryname')
+    title = request.form.get('Blogtitle')
     text = request.form.get('Body')
 
     if method == 'POST':
         create_blog(title,text,session['username'],entryname)
-    return redirect(url_for('displayblog', blogtitle=blogtitle))
+    return redirect(url_for('displayblog', blogtitle=title))
 
 '''
 @app.route("/updateblog/<blogid>", methods=['GET', 'POST'])
