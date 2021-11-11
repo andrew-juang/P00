@@ -112,7 +112,7 @@ def create():
 
     # user is logged in and is allowed to create
     if 'username' in session:
-        return render_template('create.html')
+        return render_template('create.html', username=session['username'])
     # user is not logged in and redirected to login page (catches error when user tries to go directly to /create w/o logging in)
     else:
         return redirect(url_for('index'))
@@ -144,7 +144,7 @@ def dashboard(username):
     titles = fetch_user_blogs(username)
 
     # displays the dashboard with title and content using dashboard template
-    return render_template('dashboard.html', user = username.replace(" ","-"), titles = titles)
+    return render_template('dashboard.html', user = username.replace(" ","-"), titles = titles, username=session['username'])
 
 
 @app.route("/display/<blogtitle>", methods=['GET', 'POST'])
