@@ -159,7 +159,8 @@ def displayblog(blogtitle):
     # displays blog with entry names and content using display template
     return render_template('display.html', blogtitle = blogtitle.replace(" ","-"),
                                            entries = zip(entrynames, entrycontents),
-                                           is_own_page=is_own_page )
+                                           is_own_page=is_own_page,
+                                           username=session['username'])
 
 
 @app.route("/addentry", methods=['GET', 'POST'])
@@ -171,7 +172,7 @@ def addentry():
     print(title)
     # user is logged in and is allowed to create
     if 'username' in session:
-        return render_template('createentry.html', blogtitle=title)
+        return render_template('createentry.html', blogtitle=title, username=session['username'])
     # user is not logged in and redirected to login page (catches error when user tries to go directly to /create w/o logging in)
     else:
         return redirect(url_for('index'))
