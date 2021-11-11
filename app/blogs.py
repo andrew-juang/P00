@@ -176,6 +176,7 @@ def fetch_entry_names(blogtitle):
     names = []
     for a_tuple in c.fetchall():
         names.append(a_tuple[0])
+    names.reverse()
     return names
 
 def fetch_entry_contents(blogtitle):
@@ -188,14 +189,23 @@ def fetch_entry_contents(blogtitle):
     contents = []
     for a_tuple in c.fetchall():
         contents.append(a_tuple[0])
+    contents.reverse()
     return contents
 
 
 def auth_blog(method,title,entryname,text):
     ''' Checks if the user created a valid blog '''
-    isempty = not method or not title or not entryname or not text 
 
-    if isempty:
+    isempty = not method or not title or not entryname or not text
+
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("SELECT * FROM blogs")
+    blogs = []
+    for a_tuple in c.fetchall():
+        blogs.append(a_tuple[1])
+
+    if isempty or title in blogs:
         return False
     return True
 
