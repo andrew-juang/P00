@@ -152,8 +152,8 @@ def displayblog(blogtitle):
     return render_template('display.html', blogtitle = blogtitle.replace(" ","-"), entries = zip(entrynames, entrycontents), is_own_page=is_own_page)
 
 
-@app.route("/create2", methods=['GET', 'POST'])
-def create2():
+@app.route("/addentry", methods=['GET', 'POST'])
+def addentry():
     ''' Displays Create Entry Page'''
 
     title = request.form.get('Blogtitle')

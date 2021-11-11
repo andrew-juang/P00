@@ -18,6 +18,7 @@ P00 -- Web Log Hosting Site
         <!-- link to go back to homepage -->
         <a href="{{ url_for('disp_loginpage') }}">Back to Homepage</a>
         <br><br>
+
         <!-- Display Entries Here -->
         {% for entryname, content in entries %}
             <h2> {{entryname}} </h2>
@@ -25,12 +26,15 @@ P00 -- Web Log Hosting Site
             <br>
         {% endfor %}
         <br>
+
+        <!-- Check if current user is allowed to add an entry to the blog -->
         {% if is_own_page %}
-            <form action="/create2", method="POST">
+            <form action="/addentry", method="POST">
                 <input type="submit" name="sub1" value="Create Entry">
                 <input type="hidden" name="Blogtitle" value={{blogtitle}}>
             </form><br>
         {% endif %}
+
         <!-- button to logout -->
         <form action="/logout">
             <input type="submit" name="sub1" value="Logout" class="logout">
