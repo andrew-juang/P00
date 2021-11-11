@@ -14,8 +14,9 @@ P00 -- Web Log Hosting Site
     <body>
         <h1 class="header"> Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu <br>
             Waaaa hooo HAAAH, {{username}} </h1><br>
+        <a href="{{ url_for('dashboard', username=username) }}">Dashboard</a>
 
-        <form action ="/create", method="POST">
+        <form action ="/create" method="POST">
             <input type="submit" name="sub1" value="Create Blog">
         </form> <br>
 
