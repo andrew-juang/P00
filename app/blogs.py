@@ -34,8 +34,6 @@ def create_blog(title,text,username, entryname):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     db.commit()
-    c.execute("SELECT * FROM blogs")
-    print(c.fetchall())
 
 
 def generate_id():
@@ -74,6 +72,7 @@ def blog_exist(title, username):
 
 def update_blog(username,id,entryname,text):
     ''' Updates blog '''
+
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?, ?);", (username, title, id, entryname, text))
@@ -82,8 +81,13 @@ def update_blog(username,id,entryname,text):
     return True
 
 
-def delete_blog():
+def delete_blog(blogtitle):
     ''' Delete blog '''
+
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("DELETE FROM blogs WHERE blognames = '" + str(blogtitle) + "'")
+    db.commit()
 
     return True
 
@@ -189,3 +193,12 @@ def fetch_entry_contents(blogtitle):
 
 # TESTS
 create_db()
+
+# db = sqlite3.connect(DB_FILE)
+# c = db.cursor()
+# c.execute("SELECT * FROM blogs")
+# print(c.fetchall())
+# print("\n\n\n")
+# delete_blog("christmas")
+# c.execute("SELECT * FROM blogs")
+# print(c.fetchall())

@@ -16,7 +16,7 @@ P00 -- Web Log Hosting Site
             {{blogtitle.replace("-"," ")}} </h1>
 
         <!-- link to go back to homepage -->
-        <a href="{{ url_for('disp_loginpage') }}">Back to Homepage</a>
+        <a href="{{ url_for('index') }}">Back to Homepage</a>
         <br><br>
 
         <!-- Display Entries Here -->
@@ -31,6 +31,10 @@ P00 -- Web Log Hosting Site
         {% if is_own_page %}
             <form action="/addentry", method="POST">
                 <input type="submit" name="sub1" value="Create Entry">
+                <input type="hidden" name="Blogtitle" value={{blogtitle}}>
+            </form>
+            <form action="/deleteblog", method="POST">
+                <input type="submit" name="sub1" value="Delete Blog" class="logout">
                 <input type="hidden" name="Blogtitle" value={{blogtitle}}>
             </form><br>
         {% endif %}

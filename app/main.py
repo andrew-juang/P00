@@ -8,10 +8,12 @@ from flask import Flask, render_template, request, session, redirect, url_for
 
 from app import app
 from app.auth import auth_user, create_user, create_db
-from app.blogs import create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id, get_content_from_id, get_ids, fetch_entry_names, fetch_entry_contents, fetch_user_blogs, get_user_from_title
+from app.blogs import ( create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id,
+                        get_content_from_id, get_ids, fetch_entry_names, fetch_entry_contents,
+                        fetch_user_blogs, get_user_from_title, delete_blog )
 
 @app.route("/", methods=['GET', 'POST'])
-def disp_loginpage():
+def index():
     ''' Display login page if there is no username in session, else display the
        response with the session username passed in. '''
 
@@ -36,12 +38,12 @@ def authenticate():
 
     # Get vs Post
     if method == 'GET':
-        return redirect(url_for('disp_loginpage'))
+        return redirect(url_for('index'))
 
     auth_state = auth_user(username, password)
     if auth_state == True:
         session['username'] = username
-        return redirect(url_for('disp_loginpage'))
+        return redirect(url_for('index'))
     elif auth_state == "bad_pass":
         return render_template('login.html', input="bad_pass")
     elif auth_state == "bad_user":
@@ -96,9 +98,9 @@ def logout():
     try:
         session.pop('username')
     except KeyError:
-        return redirect(url_for('disp_loginpage'))
+        return redirect(url_for('index'))
     # Redirect to login page
-    return redirect(url_for('disp_loginpage'))
+    return redirect(url_for('index'))
 
 
 @app.route("/create", methods=['GET','POST'])
@@ -110,7 +112,7 @@ def create():
         return render_template('create.html')
     # user is not logged in and redirected to login page (catches error when user tries to go directly to /create w/o logging in)
     else:
-        return redirect(url_for('disp_loginpage'))
+        return redirect(url_for('index'))
 
 
 @app.route("/createblog", methods=['GET', 'POST'])
@@ -126,7 +128,7 @@ def createblog():
     if method == 'POST':
         create_blog(title,text,session['username'],entryname)
 
-    return redirect(url_for('disp_loginpage'))
+    return redirect(url_for('index'))
 
 
 @app.route("/dashboard/<username>", methods=['GET', 'POST'])
@@ -164,9 +166,9 @@ def addentry():
         return render_template('createentry.html', blogtitle=title)
     # user is not logged in and redirected to login page (catches error when user tries to go directly to /create w/o logging in)
     else:
-        return redirect(url_for('disp_loginpage'))
+        return redirect(url_for('index'))
 
-# HARDCODED FOR NOW
+
 @app.route("/createentry", methods=['GET', 'POST'])
 def createentry():
     ''' Creates an Entry '''
@@ -182,6 +184,16 @@ def createentry():
         create_blog(title.replace("-"," "),text,session['username'],entryname)
     return redirect(url_for('displayblog', blogtitle=title))
 
+
+@app.route("/deleteblog", methods=['GET', 'POST'])
+def deleteblog():
+    ''' Delete a blog '''
+
+    title = request.form.get('Blogtitle')
+    delete_blog(title.replace("-"," "))
+
+    return redirect(url_for('index'))
+
 '''
 @app.route("/updateblog/<blogid>", methods=['GET', 'POST'])
 def updateblog():
@@ -192,6 +204,6 @@ def updateblog():
     if method == 'POST':
         update_blog(session['username'],blogid, entryname, text)
 
-    return redirect(url_for('disp_loginpage'))
+    return redirect(url_for('index'))
 
 '''
