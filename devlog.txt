@@ -197,7 +197,7 @@ andrewJ, ericG, qinaL, noakaiA -- 2021-11-10 9:20
 qinaL -- 2021-11-10 13:39
 - made the list of blogs in dashboard into links 
 
-andrewJ -- 021-11-10 22:56
+andrewJ -- 2021-11-10 22:56
 - fixed form to take in hidden input rather than using links to get blog title when creating entry
 - fixed displaying of blogs
     - no duplicates
@@ -207,15 +207,29 @@ andrewJ -- 021-11-10 22:56
 - fixed bug where users could add entries to blogs that were not their own
 - changed bad function name (create2) to addentry
 
-andrewJ -- 021-11-11 9:57
+andrewJ -- 2021-11-11 9:57
 - implemented delete blog
 - tablified response table
 - created error messages for empty fields when creating blogs or entries
 
-andrewJ -- 021-11-11 14:31
+andrewJ -- 2021-11-11 14:31
 - program now throws error if password < 8 characters
 - implemented navbar
 - fixed dashboard navbar bugs 
 - fixed displaying of entries
     - more recent entry first
 - unique blog titles
+
+noakaiA -- 2021-11-11 15:34
+- Visual fixes
+- italics for titles
+- colons
+
+andrewJ, ericG, noakaiA -- 2021-11-11 18:12
+- created edit_blog() in blogs.py through a painful process of forgetting to use escape chars
+- created edit_entry() and update_entry() in main.py through a painful process of learning how the backend of the site works
+- created editentry.html, a UI for entry edits
+- added "edit entry" buttons to display.html
+- got mad at display.html and <input> lines because they are stupid, and pyCharm is stupid and everything is stupid
+- died on the inside and lost a significant number or brain cells.
+- Andrew and Eric maybe did stuff too I think.
