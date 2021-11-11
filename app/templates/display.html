@@ -13,7 +13,7 @@ P00 -- Web Log Hosting Site
 
     <body>
         <h1 class="header"> Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu <br>
-            {{blogtitle}} </h1>
+            {{blogtitle.replace("-"," ")}} </h1>
 
         <!-- link to go back to homepage -->
         <a href="{{ url_for('disp_loginpage') }}">Back to Homepage</a>

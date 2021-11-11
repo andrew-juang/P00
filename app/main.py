@@ -157,7 +157,7 @@ def displayblog(blogtitle):
 
 @app.route("/create2", methods=['GET', 'POST'])
 def create2():
-    ''' Displays Creates Entry Page'''
+    ''' Displays Create Entry Page'''
 
     title = request.form.get('Blogtitle')
     print("SDKLJFSKLDFJLSKDJFLJK")
@@ -172,7 +172,7 @@ def create2():
 # HARDCODED FOR NOW
 @app.route("/createentry", methods=['GET', 'POST'])
 def createentry():
-    ''' Creates entry '''
+    ''' Creates an Entry '''
 
     method = request.method
     entryname = request.form.get('Entryname')

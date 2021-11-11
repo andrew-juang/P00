@@ -101,6 +101,9 @@ def fetch_blogs():
             blogs.append(a_tuple[1])
             users.append(a_tuple[0])
 
+    # reverse so most recent blogs show up
+    blogs.reverse()
+    users.reverse()
     return zip(blogs,users)
 
 

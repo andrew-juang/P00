@@ -21,7 +21,7 @@ P00 -- Web Log Hosting Site
 
         <!-- Fetches blogs from database and creates list of all blog in database with format of
                 Title by User -->
-        <h1> List of Blogs </h1>
+        <h1> List of Blogs (Most Recent Blogs First)</h1>
         {% for blogname,user in blogs_users %}
             <!-- blog title with link to display blog -->
             <a href="{{ url_for('displayblog', blogtitle=blogname.replace(" ", "-")) }}">{{ blogname }}</a> by
