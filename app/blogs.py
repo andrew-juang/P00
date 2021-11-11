@@ -31,6 +31,12 @@ def create_blog(title,text,username, entryname):
 
     db.commit()
 
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    db.commit()
+    c.execute("SELECT * FROM blogs")
+    print(c.fetchall())
+
 
 def generate_id():
     ''' Generate random ID for user '''
@@ -68,12 +74,11 @@ def blog_exist(title, username):
 
 def update_blog(username,id,entryname,text):
     ''' Updates blog '''
-    '''
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?, ?);", (username, title, id, entryname, text))
     db.commit()
-    '''
+
     return True
 
 
@@ -88,10 +93,28 @@ def fetch_blogs():
 
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute("SELECT blognames FROM blogs")
+    c.execute("SELECT * FROM blogs")
+    blogs = []
+    users = []
+    for a_tuple in c.fetchall():
+        if a_tuple[1] not in blogs:
+            blogs.append(a_tuple[1])
+            users.append(a_tuple[0])
+
+    return zip(blogs,users)
+
+
+def fetch_user_blogs(username):
+    ''' Fetch list of a USER's blog names '''
+
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("SELECT * FROM blogs")
     blogs = []
     for a_tuple in c.fetchall():
-        blogs.append(a_tuple[0])
+        if a_tuple[0] == username and a_tuple[1] not in blogs:
+            blogs.append(a_tuple[1])
+
     return blogs
 
 
@@ -126,18 +149,6 @@ def get_content_from_id(blogID):
     for content in c.fetchall():
         return content[0]
 
-def fetch_users():
-    ''' Returns list of users '''
-
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
-    c.execute("SELECT usernames FROM blogs")
-    users = []
-    for a_tuple in c.fetchall():
-        users.append(a_tuple[0])
-    return users
-
-    #idk if this works yet
 def fetch_entry_names(blogtitle):
     ''' retrieves all entries names in database that belongs to the specified
         blog (has the specified blog title) '''
@@ -146,7 +157,6 @@ def fetch_entry_names(blogtitle):
     c = db.cursor()
     c.execute("SELECT entryname FROM blogs WHERE blognames = '" + blogtitle + "'")
     names = []
-    print("this is entries")
     for a_tuple in c.fetchall():
         names.append(a_tuple[0])
     return names
@@ -166,12 +176,3 @@ def fetch_entry_contents(blogtitle):
 
 # TESTS
 create_db()
-db = sqlite3.connect(DB_FILE)
-c = db.cursor()
-db.commit()
-c.execute("SELECT * FROM blogs")
-#print(c.fetchall())
-blogs = []
-for a_tuple in c.fetchall():
-    blogs.append(a_tuple)
-print(blogs)

@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 
 from app import app
 from app.auth import auth_user, create_user, create_db
-from app.blogs import create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id, get_content_from_id, get_ids, fetch_users, fetch_entry_names, fetch_entry_contents
+from app.blogs import create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id, get_content_from_id, get_ids, fetch_entry_names, fetch_entry_contents, fetch_user_blogs
 
 @app.route("/", methods=['GET', 'POST'])
 def disp_loginpage():
@@ -18,8 +18,7 @@ def disp_loginpage():
     # Renders response if there is a user logged in, else render login page
     if 'username' in session:
         blogs = fetch_blogs()
-        users = fetch_users()
-        return render_template('response.html',username=session['username'], blogs_users=zip(blogs,users))
+        return render_template('response.html',username=session['username'], blogs_users=blogs)
     return render_template('login.html')
 
 
@@ -134,19 +133,7 @@ def createblog():
 def dashboard(username):
     ''' route for displaying a user's dashboard '''
 
-    # gets username from session
-    if not bool(username):
-        return redirect(url_for('dashboard', username=session['username']))
-
-    titles = []
-    content = []
-    ids = []
-    print(username)
-
-    ids = get_ids(username)
-    print(ids)
-    for id in ids:
-        titles.append(get_title_from_id(id))
+    titles = fetch_user_blogs(username)
 
     # displays the dashboard with title and content using dashboard template
     return render_template('dashboard.html', user = username, titles = titles)
@@ -157,24 +144,27 @@ def displayblog(blogtitle):
     ''' Display a blog and each of its entries '''
 
     # retrieves all entries associated with the blog
-    entrynames = fetch_entry_names(blogtitle)
-    entrycontents = fetch_entry_contents(blogtitle)
+    entrynames = fetch_entry_names(blogtitle.replace("-"," "))
+    entrycontents = fetch_entry_contents(blogtitle.replace("-"," "))
 
     print("entries")
     print(entrynames)
     print(entrycontents)
 
     # displays blog with entry names and content using display template
-    return render_template('display.html', blogtitle = blogtitle, entries = zip(entrynames, entrycontents))
+    return render_template('display.html', blogtitle = blogtitle.replace(" ","-"), entries = zip(entrynames, entrycontents))
 
 
-@app.route("/create2/<blogtitle>")
-def create2(blogtitle):
+@app.route("/create2", methods=['GET', 'POST'])
+def create2():
     ''' Displays Creates Entry Page'''
 
+    title = request.form.get('Blogtitle')
+    print("SDKLJFSKLDFJLSKDJFLJK")
+    print(title)
     # user is logged in and is allowed to create
     if 'username' in session:
-        return render_template('createentry.html', blogtitle=blogtitle)
+        return render_template('createentry.html', blogtitle=title)
     # user is not logged in and redirected to login page (catches error when user tries to go directly to /create w/o logging in)
     else:
         return redirect(url_for('disp_loginpage'))
@@ -189,8 +179,10 @@ def createentry():
     title = request.form.get('Blogtitle')
     text = request.form.get('Body')
 
+    print(title)
+
     if method == 'POST':
-        create_blog(title,text,session['username'],entryname)
+        create_blog(title.replace("-"," "),text,session['username'],entryname)
     return redirect(url_for('displayblog', blogtitle=title))
 
 '''

@@ -24,9 +24,9 @@ P00 -- Web Log Hosting Site
         <h1> Dashboard Tests </h1>
         {% for blogname,user in blogs_users %}
             <!-- blog title with link to display blog -->
-            <a href="{{ url_for('displayblog', blogtitle=blogname) }}">{{ blogname }}</a> by 
+            <a href="{{ url_for('displayblog', blogtitle=blogname.replace(" ", "-")) }}">{{ blogname }}</a> by
             <!-- user that created the blog with link to user's dashboard-->
-            <a href="{{ url_for('dashboard', username=user) }}">{{ user}}</a> 
+            <a href="{{ url_for('dashboard', username=user) }}">{{ user }}</a>
             <br>
         {% endfor %}
         <br>
@@ -41,7 +41,7 @@ P00 -- Web Log Hosting Site
             <a href="{{ url_for('displayblog', blogtitle=blogname) }}">{{ blogname }}</a> by {{user}}
             <br>
         {% endfor %} -->
-        
+
         <form action="/display/journal", method="POST">
             <input type="submit" name="sub1" value="Display (testing)">
         </form> <br><br>
