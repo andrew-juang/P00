@@ -216,3 +216,6 @@ andrewJ -- 021-11-11 14:31
 - program now throws error if password < 8 characters
 - implemented navbar
 - fixed dashboard navbar bugs 
+- fixed displaying of entries
+    - more recent entry first
+- unique blog titles
