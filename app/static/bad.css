@@ -89,11 +89,13 @@ a:active {
 
 /* NAVBAR STUFF */
 ul {
+  width: 98%;
   list-style-type: none;
-  margin: 0;
+  margin: auto;
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  border-radius: 4px;
 }
 
 li {
