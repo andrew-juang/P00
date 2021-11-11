@@ -207,8 +207,12 @@ andrewJ -- 021-11-10 22:56
 - fixed bug where users could add entries to blogs that were not their own
 - changed bad function name (create2) to addentry
 
-
 andrewJ -- 021-11-11 9:57
 - implemented delete blog
 - tablified response table
 - created error messages for empty fields when creating blogs or entries
+
+andrewJ -- 021-11-11 14:31
+- program now throws error if password < 8 characters
+- implemented navbar
+- fixed dashboard navbar bugs 
