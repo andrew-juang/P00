@@ -191,6 +191,14 @@ def fetch_entry_contents(blogtitle):
     return contents
 
 
+def auth_blog(method,title,entryname,text):
+    ''' Checks if the user created a valid blog '''
+    isempty = not method or not title or not entryname or not text 
+
+    if isempty:
+        return False
+    return True
+
 # TESTS
 create_db()
 

@@ -10,7 +10,7 @@ from app import app
 from app.auth import auth_user, create_user, create_db
 from app.blogs import ( create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id,
                         get_content_from_id, get_ids, fetch_entry_names, fetch_entry_contents,
-                        fetch_user_blogs, get_user_from_title, delete_blog )
+                        fetch_user_blogs, get_user_from_title, delete_blog, auth_blog)
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
@@ -124,9 +124,12 @@ def createblog():
     entryname = request.form.get('Entryname')
     text = request.form.get('Body')
 
-    # TODO: CHECK if field is empty
-    if method == 'POST':
+    # CHECK if any field is empty and throws and error
+    if auth_blog(method,title,entryname,text) and method == 'POST':
         create_blog(title,text,session['username'],entryname)
+    else:
+        blogs = fetch_blogs()
+        return render_template('response.html',username=session['username'], blogs_users=blogs, input="Invalid Blog")
 
     return redirect(url_for('index'))
 
@@ -151,7 +154,9 @@ def displayblog(blogtitle):
     is_own_page = (session['username'] == get_user_from_title(blogtitle.replace("-"," ")))
 
     # displays blog with entry names and content using display template
-    return render_template('display.html', blogtitle = blogtitle.replace(" ","-"), entries = zip(entrynames, entrycontents), is_own_page=is_own_page)
+    return render_template('display.html', blogtitle = blogtitle.replace(" ","-"),
+                                           entries = zip(entrynames, entrycontents),
+                                           is_own_page=is_own_page )
 
 
 @app.route("/addentry", methods=['GET', 'POST'])
@@ -174,15 +179,24 @@ def createentry():
     ''' Creates an Entry '''
 
     method = request.method
-    entryname = request.form.get('Entryname')
     title = request.form.get('Blogtitle')
+    entryname = request.form.get('Entryname')
     text = request.form.get('Body')
 
-    print(title)
-
-    if method == 'POST':
+    if auth_blog(method,title,entryname,text) and method == 'POST':
         create_blog(title.replace("-"," "),text,session['username'],entryname)
-    return redirect(url_for('displayblog', blogtitle=title))
+        return redirect(url_for('displayblog', blogtitle=title))
+    else:
+        # retrieves all entries associated with the blog
+        entrynames = fetch_entry_names(title.replace("-"," "))
+        entrycontents = fetch_entry_contents(title.replace("-"," "))
+        is_own_page = (session['username'] == get_user_from_title(title.replace("-"," ")))
+
+        # displays blog with entry names and content using display template
+        return render_template('display.html', blogtitle = title.replace(" ","-"),
+                                               entries = zip(entrynames, entrycontents),
+                                               is_own_page = is_own_page,
+                                               input = "Invalid Entry" )
 
 
 @app.route("/deleteblog", methods=['GET', 'POST'])

@@ -27,6 +27,10 @@ P00 -- Web Log Hosting Site
         {% endfor %}
         <br>
 
+        {% if input == "Invalid Entry" %}
+            <p style="color:red">*{{input}}. Please try again!</p>
+        {% endif %}<br>
+
         <!-- Check if current user is allowed to add an entry to the blog -->
         {% if is_own_page %}
             <form action="/addentry", method="POST">

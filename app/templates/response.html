@@ -20,20 +20,29 @@ P00 -- Web Log Hosting Site
         </form> <br>
 
         <!-- Fetches blogs from database and creates list of all blog in database with format of
-                Title by User -->
+             Title by User -->
         <h1> List of Blogs (Most Recent Blogs First)</h1>
-        {% for blogname,user in blogs_users %}
-            <!-- blog title with link to display blog -->
-            <a href="{{ url_for('displayblog', blogtitle=blogname.replace(" ", "-")) }}">{{ blogname }}</a> by
-            <!-- user that created the blog with link to user's dashboard-->
-            <a href="{{ url_for('dashboard', username=user) }}">{{ user }}</a>
-            <br>
-        {% endfor %}
-        <br>
+        <table border=1>
+            <tr>
+                <th>Blog</th>
+                <th>User</th>
+            </tr>
+            {% for blogname,user in blogs_users %}
+                <!-- table of blog titles and users that created them -->
+            <tr>
+                <td><a href="{{ url_for('displayblog', blogtitle=blogname.replace(" ", "-")) }}">{{ blogname }}</a></td>
+                <td><a href="{{ url_for('dashboard', username=user) }}">{{ user }}</a></td>
+            </tr>
+            {% endfor %}
+        </table><br>
+
+        {% if input == "Invalid Blog" %}
+            <p style="color:red">*{{input}}. Please try again!</p>
+        {% endif %}<br>
 
         <form action="/logout">
             <input type="submit" name="sub1" value="Logout" class="logout">
-        </form> <br>
+        </form><br>
     </body>
 
 </html>
