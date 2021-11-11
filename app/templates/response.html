@@ -24,12 +24,12 @@ P00 -- Web Log Hosting Site
 
         <!-- Fetches blogs from database and creates list of all blog in database with format of
              Title by User -->
-        <h1> List of Blogs (Most Recent Blogs First)</h1>
+        <h1 style>List of Blogs by Recency:</h1>
         <p>
             {% for blogname,user in blogs_users %}
                 <!-- table of blog titles and users that created them -->
                 <h2>
-                    <a href="{{ url_for('displayblog', blogtitle=blogname.replace(" ", "-")) }}">{{ blogname }}</a> by
+            <a href="{{ url_for('displayblog', blogtitle=blogname.replace(" ", "-")) }}"><i>{{ blogname }}</i></a> by
                     <a href="{{ url_for('dashboard', username=user) }}">{{ user }}</a>
                 </h2>
             {% endfor %}

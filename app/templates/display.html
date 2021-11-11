@@ -34,7 +34,7 @@ P00 -- Web Log Hosting Site
             </form>
         {% endif %}
 
-        <h1>Entries for {{blogtitle.replace("-"," ")}}</h1>
+        <h1>Entries for <i>{{blogtitle.replace("-"," ")}}:</i></h1>
         <!-- Display Entries Here -->
         {% for entryname, content in entries %}
             <h2> {{entryname}} </h2>
