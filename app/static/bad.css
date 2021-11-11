@@ -87,10 +87,6 @@ a:active {
   background-color: #E25B57 !important;
 }
 
-form {
-    display: inline;
-}
-
 /* NAVBAR STUFF */
 ul {
   list-style-type: none;
