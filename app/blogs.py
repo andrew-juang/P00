@@ -15,7 +15,7 @@ def create_db():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    c.execute("CREATE TABLE IF NOT EXISTS blogs (usernames TEXT, blognames TEXT, id INTEGER, entryname TEXT, content TEXT);")
+    c.execute("CREATE TABLE IF NOT EXISTS blogs (usernames TEXT, blognames TEXT, entryname TEXT, content TEXT);")
     # c.execute("CREATE TABLE IF NOT EXISTS blogs (usernames TEXT, blognames TEXT, id INTEGER, content TEXT);")
     db.close()
 
@@ -25,9 +25,8 @@ def create_blog(title,text,username, entryname):
 
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    id = generate_id()
-    #id = generate_id(title, username)
-    c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?, ?);", (username, title, id, entryname, text))
+
+    c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?);", (username, title, entryname, text))
 
     db.commit()
 
@@ -36,50 +35,25 @@ def create_blog(title,text,username, entryname):
     db.commit()
 
 
-def generate_id():
-    ''' Generate random ID for user '''
 
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
-
-    id = 0
-    c.execute("SELECT id FROM blogs")
-    blogids = []
-    for a_tuple in c.fetchall():
-        blogids.append(a_tuple[0])
-
-    '''
-    id = blog_exists(title,username)
-    if id:
-        return id;
-    else:
-        while id in blogids:
-            id++
-        return id
-    '''
-    while id in blogids:
-        id += 1
-    return id
-
-
-def blog_exist(title, username):
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
-    database = []
-    c.execute("SELECT id FROM blogs WHERE usernames = username AND blognames = title")
-    return id
-
-
-def update_blog(username,id,entryname,text):
+def update_blog(username,entryname,text):
     ''' Updates blog '''
 
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?, ?);", (username, title, id, entryname, text))
+    c.execute("INSERT INTO blogs VALUES (?, ?, ?, ?);", (username, title, entryname, text))
     db.commit()
 
     return True
 
+def edit_blog(username, title, oldentryname, newentryname, text):
+    '''Edit existing blog'''
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("UPDATE blogs SET entryname = \"" + newentryname + "\", content = \"" + text + "\" WHERE usernames = \"" + username + "\" AND blognames = \"" + title + "\" AND entryname = \"" + oldentryname + "\";")
+    db.commit()
+
+    return True
 
 def delete_blog(blogtitle):
     ''' Delete blog '''
@@ -134,37 +108,6 @@ def get_user_from_title(blogtitle):
         if a_tuple[1] == blogtitle:
             return a_tuple[0]
     return -1
-
-def get_ids(username):
-    ''' Returns the blog ids of the user '''
-
-    ids = []
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
-    c.execute("SELECT * FROM blogs")
-    for a_tuple in c.fetchall():
-        if(a_tuple[0] == username):
-            ids.append(a_tuple[2])
-    return ids
-
-def get_title_from_id(blogID):
-    ''' returns the title of corrresponding blog using the blog id '''
-
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
-    c.execute("SELECT blognames FROM blogs WHERE id = "+ str(blogID))
-    for content in c.fetchall():
-        return content[0]
-
-
-def get_content_from_id(blogID):
-    ''' returns the content of corrresponding blog using the blog id '''
-
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
-    c.execute("SELECT content FROM blogs WHERE id = "+ str(blogID))
-    for content in c.fetchall():
-        return content[0]
 
 def fetch_entry_names(blogtitle):
     ''' retrieves all entries names in database that belongs to the specified

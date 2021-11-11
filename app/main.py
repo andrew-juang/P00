@@ -8,9 +8,8 @@ from flask import Flask, render_template, request, session, redirect, url_for
 
 from app import app
 from app.auth import auth_user, create_user, create_db
-from app.blogs import ( create_blog, update_blog, delete_blog, fetch_blogs, get_title_from_id,
-                        get_content_from_id, get_ids, fetch_entry_names, fetch_entry_contents,
-                        fetch_user_blogs, get_user_from_title, delete_blog, auth_blog, auth_entry)
+from app.blogs import ( create_blog, update_blog, delete_blog, fetch_blogs, fetch_entry_names, fetch_entry_contents,
+                        fetch_user_blogs, get_user_from_title, delete_blog, auth_blog, auth_entry, edit_blog)
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
@@ -153,6 +152,7 @@ def displayblog(blogtitle):
 
     # retrieves all entries associated with the blog
     entrynames = fetch_entry_names(blogtitle.replace("-"," "))
+    print(entrynames)
     entrycontents = fetch_entry_contents(blogtitle.replace("-"," "))
     is_own_page = (session['username'] == get_user_from_title(blogtitle.replace("-"," ")))
 
@@ -211,6 +211,54 @@ def deleteblog():
     delete_blog(title.replace("-"," "))
 
     return redirect(url_for('index'))
+
+
+@app.route("/editentry", methods=['GET', 'POST'])
+def editentry():
+    '''Display edit entry page'''
+
+    title = request.form.get('blogtitle')
+    print(title)
+    entryname = request.form.get('Entryname')
+    print(entryname)
+    entrycontents = request.form.get('content')
+    print(entrycontents)
+
+    if 'username' in session:
+        return render_template('editentry.html', blogtitle=title, username=session['username'], entryname=entryname, entrycontents=entrycontents)
+    else:
+        return redirect(url_for('index'))
+
+@app.route("/updateentry", methods=['GET', 'POST'])
+def updateentry():
+    ''' Updates an Entry '''
+
+    method = request.method
+
+    title = request.form.get('Blogtitle')
+    print(title)
+    oldentryname = request.form.get('Oldentryname')
+    print(oldentryname)
+    newentryname = request.form.get('Entryname')
+    print(newentryname)
+    text = request.form.get('Body')
+    print(text)
+    print("username: " + session['username'])
+
+    #if auth_entry(method,title,newentryname,text) and method == 'POST':
+    edit_blog(session['username'], title.replace("-", " "), oldentryname, newentryname, text)
+    return redirect(url_for('displayblog', blogtitle=title))
+    '''else:
+        # retrieves all entries associated with the blog
+        entrynames = fetch_entry_names(title.replace("-"," "))
+        entrycontents = fetch_entry_contents(title.replace("-"," "))
+        is_own_page = (session['username'] == get_user_from_title(title.replace("-"," ")))
+
+        # displays blog with entry names and content using display template
+        return render_template('display.html', blogtitle = title.replace(" ","-"),
+                                               entries = zip(entrynames, entrycontents),
+                                               is_own_page = is_own_page,
+                                               input = "Invalid Entry" )'''
 
 '''
 @app.route("/updateblog/<blogid>", methods=['GET', 'POST'])

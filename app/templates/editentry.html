@@ -7,7 +7,7 @@ P00 -- Web Log Hosting Site
 
 <html>
     <head>
-        <title> Create Entry </title>
+        <title> Edit Entry </title>
         <link rel="stylesheet" href="../static/bad.css">
     </head>
 
@@ -19,14 +19,16 @@ P00 -- Web Log Hosting Site
     </ul>
 
     <body>
-        <h1 class="header"> Add An Entry <h1>
+        <h1 class="header"> Edit {{entryname}} <h1>
         <!-- FIX THIS  -->
-        <form action = "/createentry" method="POST" id="create">
+        <form action = "/updateentry" method="POST" id="create">
             <label>Entry Name</label><br>
-            <input type="text" name="Entryname"><br><br>
+            <input type="text" name="Entryname" value="{{entryname}}"><br><br>
+            <input type="hidden" name="Oldentryname" value="{{entryname}}"><br><br>
             <label>Content</label><br>
-            <textarea form="create" rows="10" name="Body"></textarea>
+            <textarea form="create" rows="10" name="Body">{{entrycontents}}</textarea>
             <input type="hidden" name="Blogtitle" value={{blogtitle}}>
+            <input type="hidden" name="username" value={{username}}>
             <input type="submit" name="sub1" value="Post Entry">
             <!-- <a href="{{ url_for('createentry', blogtitle=blogtitle) }}">Create Entry</a> -->
         </form>
