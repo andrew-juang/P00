@@ -190,5 +190,19 @@ noakaiA -- 2021-11-09 1:30
 - getting the logout button to be red instead of green was harder than it should have been.
 - questioned whether we should have out team name and roster on every main page of the site
 
+andrewJ, ericG, qinaL, noakaiA -- 2021-11-10 9:20
+- worked on allowing entry to take in the blog title
+- created temporary solution with links instead of form buttons
+
 qinaL -- 2021-11-10 13:39
 - made the list of blogs in dashboard into links 
+
+andrewJ -- 021-11-10 22:56
+- fixed form to take in hidden input rather than using links to get blog title when creating entry
+- fixed displaying of blogs
+    - no duplicates
+    - more recent blog first
+- fixed url error where white space would cause blog title to be passed incorrectly
+    - used replace to temporary replace whitespace with a hyphen
+- fixed bug where users could add entries to blogs that were not their own
+- change bad function name (create2) to addentry
