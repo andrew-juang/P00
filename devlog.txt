@@ -205,4 +205,10 @@ andrewJ -- 021-11-10 22:56
 - fixed url error where white space would cause blog title to be passed incorrectly
     - used replace to temporary replace whitespace with a hyphen
 - fixed bug where users could add entries to blogs that were not their own
-- change bad function name (create2) to addentry
+- changed bad function name (create2) to addentry
+
+
+andrewJ -- 021-11-11 9:57
+- implemented delete blog
+- tablified response table
+- created error messages for empty fields when creating blogs or entries
