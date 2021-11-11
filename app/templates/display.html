@@ -11,25 +11,15 @@ P00 -- Web Log Hosting Site
         <link rel="stylesheet" href="../static/bad.css">
     </head>
 
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/create">Create Blog</a></li>
+        <li style="float:right"><a href="/logout" class="logout">Logout</a></li>
+    </ul>
+
     <body>
         <h1 class="header"> Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu <br>
             {{blogtitle.replace("-"," ")}} </h1>
-
-        <!-- link to go back to homepage -->
-        <a href="{{ url_for('index') }}">Back to Homepage</a>
-        <br><br>
-
-        <!-- Display Entries Here -->
-        {% for entryname, content in entries %}
-            <h2> {{entryname}} </h2>
-            {{ content }}
-            <br>
-        {% endfor %}
-        <br>
-
-        {% if input == "Invalid Entry" %}
-            <p style="color:red">*{{input}}. Please try again!</p>
-        {% endif %}<br>
 
         <!-- Check if current user is allowed to add an entry to the blog -->
         {% if is_own_page %}
@@ -43,10 +33,19 @@ P00 -- Web Log Hosting Site
             </form><br>
         {% endif %}
 
-        <!-- button to logout -->
-        <form action="/logout">
-            <input type="submit" name="sub1" value="Logout" class="logout">
-        </form>
+        <h1>Entries for {{blogtitle.replace("-"," ")}}</h1>
+        <!-- Display Entries Here -->
+        {% for entryname, content in entries %}
+            <h2> {{entryname}} </h2>
+            {{ content }}
+            <br>
+        {% endfor %}
+        <br>
+
+        {% if input == "Invalid Entry" %}
+            <p style="color:red">*{{input}}. Please try again!</p>
+        {% endif %}<br>
+
         <br>
     </body>
 

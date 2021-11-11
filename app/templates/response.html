@@ -11,38 +11,32 @@ P00 -- Web Log Hosting Site
         <link rel="stylesheet" href="../static/bad.css">
     </head>
 
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/create">Create Blog</a></li>
+        <li style="float:right"><a href="/logout" class="logout">Logout</a></li>
+    </ul>
+
     <body>
         <h1 class="header"> Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu <br>
-            Waaaa hooo HAAAH, {{username}} </h1><br>
-
-        <form action ="/create", method="POST">
-            <input type="submit" name="sub1" value="Create Blog">
-        </form> <br>
+            Waaaa hooo HAAAH, {{username}} </h1>
 
         <!-- Fetches blogs from database and creates list of all blog in database with format of
              Title by User -->
         <h1> List of Blogs (Most Recent Blogs First)</h1>
-        <table border=1>
-            <tr>
-                <th>Blog</th>
-                <th>User</th>
-            </tr>
+        <p>
             {% for blogname,user in blogs_users %}
                 <!-- table of blog titles and users that created them -->
-            <tr>
-                <td><a href="{{ url_for('displayblog', blogtitle=blogname.replace(" ", "-")) }}">{{ blogname }}</a></td>
-                <td><a href="{{ url_for('dashboard', username=user) }}">{{ user }}</a></td>
-            </tr>
+                <h2>
+                    <a href="{{ url_for('displayblog', blogtitle=blogname.replace(" ", "-")) }}">{{ blogname }}</a> by
+                    <a href="{{ url_for('dashboard', username=user) }}">{{ user }}</a>
+                </h2>
             {% endfor %}
-        </table><br>
+        </p>
 
         {% if input == "Invalid Blog" %}
             <p style="color:red">*{{input}}. Please try again!</p>
         {% endif %}<br>
-
-        <form action="/logout">
-            <input type="submit" name="sub1" value="Logout" class="logout">
-        </form><br>
     </body>
 
 </html>
