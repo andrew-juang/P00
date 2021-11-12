@@ -144,7 +144,7 @@ def dashboard(username):
     titles.reverse()
 
     # displays the dashboard with title and content using dashboard template
-    return render_template('dashboard.html', user = username.replace(" ","-"), titles = titles, username=session['username'])
+    return render_template('dashboard.html', user = username, titles = titles, username=session['username'])
 
 
 @app.route("/display/<blogtitle>", methods=['GET', 'POST'])
@@ -152,13 +152,13 @@ def displayblog(blogtitle):
     ''' Display a blog and each of its entries '''
 
     # retrieves all entries associated with the blog
-    entrynames = fetch_entry_names(blogtitle.replace("-"," "))
+    entrynames = fetch_entry_names(blogtitle)
     print(entrynames)
-    entrycontents = fetch_entry_contents(blogtitle.replace("-"," "))
-    is_own_page = (session['username'] == get_user_from_title(blogtitle.replace("-"," ")))
+    entrycontents = fetch_entry_contents(blogtitle)
+    is_own_page = (session['username'] == get_user_from_title(blogtitle))
 
     # displays blog with entry names and content using display template
-    return render_template('display.html', blogtitle = blogtitle.replace(" ","-"),
+    return render_template('display.html', blogtitle = blogtitle,
                                            entries = zip(entrynames, entrycontents),
                                            is_own_page=is_own_page,
                                            username=session['username'])
@@ -189,16 +189,16 @@ def createentry():
     text = request.form.get('Body')
 
     if auth_entry(method,title,entryname,text) and method == 'POST':
-        create_blog(title.replace("-"," "),text,session['username'],entryname)
+        create_blog(title,text,session['username'],entryname)
         return redirect(url_for('displayblog', blogtitle=title))
     else:
         # retrieves all entries associated with the blog
-        entrynames = fetch_entry_names(title.replace("-"," "))
-        entrycontents = fetch_entry_contents(title.replace("-"," "))
-        is_own_page = (session['username'] == get_user_from_title(title.replace("-"," ")))
+        entrynames = fetch_entry_names(title)
+        entrycontents = fetch_entry_contents(title)
+        is_own_page = (session['username'] == get_user_from_title(title))
 
         # displays blog with entry names and content using display template
-        return render_template('display.html', blogtitle = title.replace(" ","-"),
+        return render_template('display.html', blogtitle = title,
                                                entries = zip(entrynames, entrycontents),
                                                is_own_page = is_own_page,
                                                input = "Invalid Entry" )
@@ -209,7 +209,7 @@ def deleteblog():
     ''' Delete a blog '''
 
     title = request.form.get('blogtitle')
-    delete_blog(title.replace("-"," "))
+    delete_blog(title)
 
     return redirect(url_for('index'))
 
@@ -248,5 +248,5 @@ def updateentry():
     print("username: " + session['username'])
 
     #if auth_entry(method,title,newentryname,text) and method == 'POST':
-    edit_blog(session['username'], title.replace("-", " "), oldentryname, newentryname, text)
+    edit_blog(session['username'], title, oldentryname, newentryname, text)
     return redirect(url_for('displayblog', blogtitle=title))

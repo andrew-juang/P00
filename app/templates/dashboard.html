@@ -26,7 +26,7 @@ P00 -- Thingamablog
         <!-- Display list of user's blogs here -->
         {% for title in titles %}
         <!-- each blog is a link that will lead to display such blog -->
-        <h2> <a href= "{{ url_for('displayblog', blogtitle = title.replace(" ","-")) }}"><i>{{ title }}</i></a></h2>
+        <h2> <a href= "{{ url_for('displayblog', blogtitle = title) }}"><i>{{ title }}</i></a></h2>
         {% endfor %}
         <br>
     </body>
