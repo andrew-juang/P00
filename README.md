@@ -6,7 +6,7 @@
 <br>
 
 ## App Description 
-thingymahblog
+thingymablog
 
 ## Launch Codes
 - Install virtual environment <br>
