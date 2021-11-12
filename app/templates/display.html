@@ -24,11 +24,11 @@ P00 -- Thingamablog
 
         <!-- Check if current user is allowed to add an entry to the blog -->
         {% if is_own_page %}
-            <form style="display: inline;" action="/addentry", method="POST">
+            <form style="display: inline;" action="/addentry" method="POST">
                 <input type="submit" name="sub1" value="Create Entry">
                 <input type="hidden" name="Blogtitle" value="{{blogtitle}}">
             </form>
-            <form style="display: inline;" action="/deleteblog", method="POST">
+            <form style="display: inline;" action="/deleteblog" method="POST">
                 <input type="submit" name="sub1" value="Delete Blog" class="logout">
                 <input type="hidden" name="blogtitle" value="{{blogtitle}}">
             </form>
