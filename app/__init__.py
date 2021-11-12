@@ -1,6 +1,6 @@
 # Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu
 # SoftDev
-# P00 -- Web Log Hosting Site
+# P00 -- Thingamablog
 
 from os import urandom
 from flask import Flask, render_template, request, session, redirect, url_for
