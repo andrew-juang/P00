@@ -233,3 +233,6 @@ andrewJ, ericG, noakaiA -- 2021-11-11 18:12
 - got mad at display.html and <input> lines because they are stupid, and pyCharm is stupid and everything is stupid
 - died on the inside and lost a significant number or brain cells.
 - Andrew and Eric maybe did stuff too I think.
+
+qinaL -- 2021-11-12 0:15
+- updated design.pdf to reflect the changes in the design of our site we had since made
