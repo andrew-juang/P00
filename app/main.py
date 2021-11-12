@@ -211,7 +211,7 @@ def deleteblog():
     title = request.form.get('blogtitle')
     delete_blog(title)
 
-    return redirect(url_for('index'))
+    return redirect(url_for('dashboard', username=session['username']))
 
 
 @app.route("/editentry", methods=['GET', 'POST'])
