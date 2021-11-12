@@ -1,5 +1,9 @@
 # Thingamablog by Kazimierz Major
-Andrew Juang, Eric Guo, Noakai Aronesty, Qina Liu <br>
+**Andrew Juang:** Project Manager, Routing, Create/Delete/Display Blogs <br>
+**Eric Guo:** Project Design, Edit/Create Blogs <br>
+**Noakai Aronesty:** User Database, Frontend, Edit Blogs <br>
+**Qina Liu:** Project Design, User Database, Display Blogs <br>
+<br>
 
 ## App Description 
 thingymahblog
