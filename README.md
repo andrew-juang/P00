@@ -3,10 +3,12 @@
 **Eric Guo:** Project Design, Edit/Create Blogs <br>
 **Noakai Aronesty:** User Database, Frontend, Edit Blogs <br>
 **Qina Liu:** Project Design, User Database, Display Blogs <br>
-<br>
 
 ## App Description 
-thingamablog
+Thingamablog is a weblog hosting site in which blogs on various topics are arranged in reverse chronological order (latest blog displayed first). 
+Within each blog contains a series of entries, also in reverse chronological order, related to the topic of the blog. 
+A user can create a blog, add entries to their blog, update their entries, and delete their blog. 
+Additionally, a user has access to a dashboard containing all of their blogs and has access blogs/dashboards of other users.  
 
 ## Launch Codes
 - Install virtual environment <br>
