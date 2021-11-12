@@ -1,6 +1,6 @@
 Kazimierz Major -- Andrew Juang, Noakai Aronesty, Eric Guo, Qina Liu
 SoftDev
-P00 -- Web Log Hosting Site
+P00 -- Thingamablog
 
 qinaL -- 2021-10-27 22:53
 - Design document made and pushed to github
