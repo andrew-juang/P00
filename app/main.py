@@ -141,6 +141,7 @@ def dashboard(username):
     ''' Route for displaying a user's dashboard '''
 
     titles = fetch_user_blogs(username)
+    titles.reverse()
 
     # displays the dashboard with title and content using dashboard template
     return render_template('dashboard.html', user = username.replace(" ","-"), titles = titles, username=session['username'])
