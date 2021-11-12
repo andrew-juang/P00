@@ -138,7 +138,7 @@ def createblog():
 
 @app.route("/dashboard/<username>", methods=['GET', 'POST'])
 def dashboard(username):
-    ''' route for displaying a user's dashboard '''
+    ''' Route for displaying a user's dashboard '''
 
     titles = fetch_user_blogs(username)
 
@@ -207,7 +207,7 @@ def createentry():
 def deleteblog():
     ''' Delete a blog '''
 
-    title = request.form.get('Blogtitle')
+    title = request.form.get('blogtitle')
     delete_blog(title.replace("-"," "))
 
     return redirect(url_for('index'))
@@ -229,9 +229,10 @@ def editentry():
     else:
         return redirect(url_for('index'))
 
+
 @app.route("/updateentry", methods=['GET', 'POST'])
 def updateentry():
-    ''' Updates an Entry '''
+    ''' Updates an entry '''
 
     method = request.method
 
@@ -248,28 +249,3 @@ def updateentry():
     #if auth_entry(method,title,newentryname,text) and method == 'POST':
     edit_blog(session['username'], title.replace("-", " "), oldentryname, newentryname, text)
     return redirect(url_for('displayblog', blogtitle=title))
-    '''else:
-        # retrieves all entries associated with the blog
-        entrynames = fetch_entry_names(title.replace("-"," "))
-        entrycontents = fetch_entry_contents(title.replace("-"," "))
-        is_own_page = (session['username'] == get_user_from_title(title.replace("-"," ")))
-
-        # displays blog with entry names and content using display template
-        return render_template('display.html', blogtitle = title.replace(" ","-"),
-                                               entries = zip(entrynames, entrycontents),
-                                               is_own_page = is_own_page,
-                                               input = "Invalid Entry" )'''
-
-'''
-@app.route("/updateblog/<blogid>", methods=['GET', 'POST'])
-def updateblog():
-    method = request.method
-    entryname = request.form.get('Entryname')
-    text = request.form.get('Body')
-
-    if method == 'POST':
-        update_blog(session['username'],blogid, entryname, text)
-
-    return redirect(url_for('index'))
-
-'''

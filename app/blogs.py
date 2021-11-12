@@ -16,7 +16,6 @@ def create_db():
     c = db.cursor()
 
     c.execute("CREATE TABLE IF NOT EXISTS blogs (usernames TEXT, blognames TEXT, entryname TEXT, content TEXT);")
-    # c.execute("CREATE TABLE IF NOT EXISTS blogs (usernames TEXT, blognames TEXT, id INTEGER, content TEXT);")
     db.close()
 
 
@@ -35,7 +34,6 @@ def create_blog(title,text,username, entryname):
     db.commit()
 
 
-
 def update_blog(username,entryname,text):
     ''' Updates blog '''
 
@@ -46,6 +44,7 @@ def update_blog(username,entryname,text):
 
     return True
 
+
 def edit_blog(username, title, oldentryname, newentryname, text):
     '''Edit existing blog'''
     db = sqlite3.connect(DB_FILE)
@@ -54,6 +53,7 @@ def edit_blog(username, title, oldentryname, newentryname, text):
     db.commit()
 
     return True
+
 
 def delete_blog(blogtitle):
     ''' Delete blog '''
@@ -98,6 +98,7 @@ def fetch_user_blogs(username):
 
     return blogs
 
+
 def get_user_from_title(blogtitle):
     ''' Fetch user from blog title'''
 
@@ -109,8 +110,9 @@ def get_user_from_title(blogtitle):
             return a_tuple[0]
     return -1
 
+
 def fetch_entry_names(blogtitle):
-    ''' retrieves all entries names in database that belongs to the specified
+    ''' Retrieves all entries names in database that belongs to the specified
         blog (has the specified blog title) '''
 
     db = sqlite3.connect(DB_FILE)
@@ -122,8 +124,9 @@ def fetch_entry_names(blogtitle):
     names.reverse()
     return names
 
+
 def fetch_entry_contents(blogtitle):
-    ''' retrieves all entries names in database that belongs to the specified
+    ''' Retrieves all entries names in database that belongs to the specified
         blog (has the specified blog title) '''
 
     db = sqlite3.connect(DB_FILE)
@@ -152,6 +155,7 @@ def auth_blog(method,title,entryname,text):
         return False
     return True
 
+
 def auth_entry(method,title,entryname,text):
     ''' Checks if the user created a valid blog '''
 
@@ -161,7 +165,7 @@ def auth_entry(method,title,entryname,text):
         return False
     return True
 
-# TESTS
+############### TESTS
 create_db()
 
 # db = sqlite3.connect(DB_FILE)
