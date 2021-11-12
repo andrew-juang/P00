@@ -1,4 +1,4 @@
-# Thingymahblog by Kazimierz Major
+# Thingamablog by Kazimierz Major
 Andrew Juang, Eric Guo, Noakai Aronesty, Qina Liu <br>
 
 ## App Description 
