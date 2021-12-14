@@ -55,7 +55,6 @@ def register():
 
     return render_template('register.html')
 
-
 @app.route("/rAuth", methods =['GET', 'POST'])
 def rAuthenticate():
     ''' Authentication of username and passwords given in register page from user '''
